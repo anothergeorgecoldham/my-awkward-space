@@ -1,52 +1,173 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import { siteConfig } from "../config/content";
 
 const links = [
   {
     name: 'GitHub',
     url: 'https://github.com/anothergeorgecoldham',
-    description: 'Check out my code and projects'
+    description: 'Check out my code and projects',
+    icon: 'github'
   },
   {
     name: 'Twitter/X',
     url: 'https://twitter.com/yourusername',
-    description: 'Follow me for updates and thoughts'
+    description: 'Follow me for updates and thoughts',
+    icon: 'twitter'
   },
   {
     name: 'LinkedIn',
     url: 'https://linkedin.com/in/yourprofile',
-    description: 'Connect with me professionally'
+    description: 'Connect with me professionally',
+    icon: 'linkedin'
   },
   {
     name: 'Email',
     url: 'mailto:your.email@example.com',
-    description: 'Send me a message'
+    description: 'Send me a message',
+    icon: 'email'
   }
 ];
 ---
 
-<Layout title="Links">
-  <h1>Links</h1>
-  <p>Find me on various platforms across the web:</p>
-  
-  <ul class="links-list">
-    {links.map((link) => (
-      <li>
-        <a href={link.url} target="_blank" rel="noopener noreferrer">
-          {link.name}
-        </a>
-        <p>{link.description}</p>
-      </li>
-    ))}
-  </ul>
-  
-  <h2>About These Links</h2>
-  <p>
-    Feel free to reach out on any of these platforms. I'm always happy to 
-    connect with fellow developers, learners, and anyone interested in tech!
-  </p>
-  
-  <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">
-    Note: Update the links above with your actual social media profiles
-  </p>
-</Layout>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Links - {siteConfig.name}</title>
+    <meta name="description" content="Find me on various platforms across the web" />
+    <script is:inline>
+      (function () {
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        const initialTheme =
+          savedTheme === "system"
+            ? prefersDark
+              ? "dark"
+              : "light"
+            : savedTheme;
+
+        if (initialTheme === "dark") {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      })();
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", (e) => {
+            if (localStorage.getItem("theme") === "system") {
+              if (e.matches) {
+                document.documentElement.classList.add("dark");
+              } else {
+                document.documentElement.classList.remove("dark");
+              }
+            }
+          });
+      });
+    </script>
+    <style>
+      .dot-hexagon-light {
+        background-image: radial-gradient(
+            circle,
+            #80808045 1px,
+            transparent 1px
+          ),
+          radial-gradient(circle, #80808045 1px, transparent 1px);
+        background-size: 24px 41.57px;
+        background-position:
+          0 0,
+          12px 20.78px;
+      }
+
+      .dot-hexagon-dark {
+        background-image: radial-gradient(
+            circle,
+            #ffffff35 1px,
+            transparent 1px
+          ),
+          radial-gradient(circle, #ffffff35 1px, transparent 1px);
+        background-size: 24px 41.57px;
+        background-position:
+          0 0,
+          12px 20.78px;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex flex-col bg-white dark:bg-neutral-900 transition-colors duration-300"
+  >
+    <div class="relative flex-grow flex flex-col">
+      <div class="absolute inset-0 z-0">
+        <div
+          class="absolute inset-0 -z-10 dot-hexagon-light dark:dot-hexagon-dark"
+        >
+        </div>
+        <div
+          class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgba(255,255,255,0.5)_60%,rgba(255,255,255,0.9)_85%,white_100%)] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgba(23,23,23,0.5)_60%,rgba(23,23,23,0.9)_85%,rgb(23,23,23)_100%)] -z-10"
+        >
+        </div>
+        <div
+          class="absolute left-0 right-0 top-0 -z-10 m-auto h-[1200px] w-[1200px] rounded-full bg-neutral-400 opacity-10 blur-[100px]"
+        >
+        </div>
+      </div>
+
+      <Navigation />
+      <section class="relative z-20 w-full max-w-4xl mx-auto mt-24 mb-12 px-4">
+        <div class="relative z-20 w-full mx-auto">
+          <h2
+            class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-3xl lg:text-4xl mb-4"
+          >
+            Links
+          </h2>
+          <p
+            class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg mb-8"
+          >
+            Find me on various platforms across the web:
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+            {
+              links.map((link) => (
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group relative block p-6 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300 hover:shadow-lg"
+                >
+                  <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    {link.name}
+                  </h3>
+                  <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                    {link.description}
+                  </p>
+                </a>
+              ))
+            }
+          </div>
+
+          <div class="mt-12 p-6 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
+            <h3 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-2">
+              About These Links
+            </h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-400">
+              Feel free to reach out on any of these platforms. I'm always happy to 
+              connect with fellow developers, learners, and anyone interested in tech!
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <Footer />
+  </body>
+</html>

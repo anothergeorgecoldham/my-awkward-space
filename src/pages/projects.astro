@@ -1,22 +1,7 @@
 ---
-import Navigation from "../../components/Navigation.astro";
-import Footer from "../../components/Footer.astro";
-import { siteConfig } from "../../config/content";
-
-export async function getStaticPaths() {
-  const blogPosts = await Astro.glob('../../content/blog/*.md');
-  
-  return blogPosts.map((post) => {
-    const slug = post.file.split('/').pop().replace('.md', '');
-    return {
-      params: { slug },
-      props: { post },
-    };
-  });
-}
-
-const { post } = Astro.props;
-const { Content } = post;
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import { projectsContent } from "../config/content";
 ---
 
 <html lang="en">
@@ -25,8 +10,8 @@ const { Content } = post;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <title>{post.frontmatter.title} - {siteConfig.name}</title>
-    <meta name="description" content={post.frontmatter.description || ''} />
+    <title>{projectsContent.meta.title}</title>
+    <meta name="description" content={projectsContent.meta.description} />
     <script is:inline>
       (function () {
         const savedTheme = localStorage.getItem("theme") || "dark";
@@ -110,29 +95,46 @@ const { Content } = post;
       </div>
 
       <Navigation />
-      <section class="relative z-20 w-full max-w-3xl mx-auto mt-24 mb-12 px-4">
-        <article class="prose dark:prose-invert prose-neutral max-w-none">
-          <div class="mb-8">
-            <a 
-              href="/posts/" 
-              class="inline-flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors mb-4 no-underline"
-            >
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-              Back to all posts
-            </a>
-            <h1 class="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-4xl mt-4 mb-4">
-              {post.frontmatter.title}
-            </h1>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">
-              Published on {post.frontmatter.date}
-            </p>
+      <section class="relative z-20 w-full max-w-4xl mx-auto mt-24 mb-12 px-4">
+        <div class="relative z-20 w-full mx-auto">
+          <h2
+            class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-3xl lg:text-4xl mb-4"
+          >
+            {projectsContent.title}
+          </h2>
+          <p
+            class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg mb-8"
+          >
+            {projectsContent.description}
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            {
+              projectsContent.projects.map((project) => (
+                <a
+                  href={project.href}
+                  class="group relative block overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300"
+                >
+                  <div class="aspect-video bg-neutral-100 dark:bg-neutral-800 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div class="p-6 bg-white dark:bg-neutral-900">
+                    <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-2">
+                      {project.title}
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                      {project.description}
+                    </p>
+                  </div>
+                </a>
+              ))
+            }
           </div>
-          <div class="text-neutral-800 dark:text-neutral-200">
-            <Content />
-          </div>
-        </article>
+        </div>
       </section>
     </div>
 
