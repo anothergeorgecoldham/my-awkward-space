@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const blogPosts = await Astro.glob('../../content/blog/*.md');
+  
+  return blogPosts.map((post) => {
+    const slug = post.file.split('/').pop().replace('.md', '');
+    return {
+      params: { slug },
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+const { Content } = post;
+---
+
+<Layout title={post.frontmatter.title}>
+  <article>
+    <h1>{post.frontmatter.title}</h1>
+    <p class="blog-post-meta">Published on {post.frontmatter.date}</p>
+    <Content />
+  </article>
+  
+  <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
+    <a href="/" style="color: #0066cc; text-decoration: none;">← Back to all posts</a>
+  </div>
+</Layout>

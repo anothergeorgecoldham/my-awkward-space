@@ -1,0 +1,10 @@
+# Netlify Build Configuration
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# Redirect all requests to index.html for SPA routing (not needed for Astro SSG, but good practice)
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404

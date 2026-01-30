@@ -1,0 +1,18 @@
+{
+  "name": "my-awkward-space",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "This repo hosts a simple website with weblinks for George Coldham",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "astro": "^5.17.1"
+  }
+}
