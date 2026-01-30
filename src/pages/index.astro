@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Get all blog posts
+const blogPosts = await Astro.glob('../content/blog/*.md');
+
+// Sort by date (newest first)
+const sortedPosts = blogPosts.sort((a, b) => {
+  const dateA = new Date(a.frontmatter.date);
+  const dateB = new Date(b.frontmatter.date);
+  return dateB - dateA;
+});
+---
+
+<Layout title="Home">
+  <h1>Welcome to My Awkward Space</h1>
+  <p>A collection of my thoughts, ideas, and experiences.</p>
+  
+  <div class="blog-posts">
+    <h2>Recent Posts</h2>
+    {sortedPosts.map((post) => (
+      <article class="blog-post">
+        <a href={`/blog/${post.file.split('/').pop().replace('.md', '')}`}>
+          <h2>{post.frontmatter.title}</h2>
+          <p class="blog-post-meta">{post.frontmatter.date}</p>
+          <p>{post.frontmatter.description}</p>
+        </a>
+      </article>
+    ))}
+  </div>
+</Layout>

@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const links = [
+  {
+    name: 'GitHub',
+    url: 'https://github.com/anothergeorgecoldham',
+    description: 'Check out my code and projects'
+  },
+  {
+    name: 'Twitter/X',
+    url: 'https://twitter.com/yourusername',
+    description: 'Follow me for updates and thoughts'
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://linkedin.com/in/yourprofile',
+    description: 'Connect with me professionally'
+  },
+  {
+    name: 'Email',
+    url: 'mailto:your.email@example.com',
+    description: 'Send me a message'
+  }
+];
+---
+
+<Layout title="Links">
+  <h1>Links</h1>
+  <p>Find me on various platforms across the web:</p>
+  
+  <ul class="links-list">
+    {links.map((link) => (
+      <li>
+        <a href={link.url} target="_blank" rel="noopener noreferrer">
+          {link.name}
+        </a>
+        <p>{link.description}</p>
+      </li>
+    ))}
+  </ul>
+  
+  <h2>About These Links</h2>
+  <p>
+    Feel free to reach out on any of these platforms. I'm always happy to 
+    connect with fellow developers, learners, and anyone interested in tech!
+  </p>
+  
+  <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">
+    Note: Update the links above with your actual social media profiles
+  </p>
+</Layout>
