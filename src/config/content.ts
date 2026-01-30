@@ -83,7 +83,7 @@ export const projectsContent = {
       title: "My Awkward Space",
       description:
         "A personal blog built with Astro, featuring a modern design with dark/light mode support.",
-      image: "/assets/images/projects/project1.jpg",
+      image: "/assets/images/projects/project1.svg",
       href: "/",
     },
   ],

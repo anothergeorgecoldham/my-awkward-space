@@ -222,7 +222,7 @@ const postsData = JSON.stringify(allPosts);
             paginationHTML += `
               <a
                 href="${getPageUrl(i)}"
-                aria-current="${isCurrentPage ? "page" : undefined}"
+                ${isCurrentPage ? 'aria-current="page"' : ''}
                 class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium transition-colors ${
                   isCurrentPage
                     ? "bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900"

@@ -42,6 +42,7 @@ import { siteConfig } from "../config/content";
           id="theme-toggle"
           class="p-2 rounded-full text-neutral-600 hover:text-neutral-400 dark:text-neutral-400 dark:hover:text-neutral-200 transition-colors"
           title="Toggle theme"
+          aria-label="Toggle dark mode"
         >
           <svg
             class="w-5 h-5 theme-icon-light hidden"
@@ -70,8 +71,12 @@ import { siteConfig } from "../config/content";
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const themeToggle = document.getElementById("theme-toggle");
+    if (!themeToggle) return;
+    
     const lightIcon = themeToggle.querySelector(".theme-icon-light");
     const darkIcon = themeToggle.querySelector(".theme-icon-dark");
+    
+    if (!lightIcon || !darkIcon) return;
 
     function updateThemeIcon(isDark) {
       if (isDark) {
