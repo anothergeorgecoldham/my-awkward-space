@@ -1,144 +1,107 @@
 ---
-const { title } = Astro.props;
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import { siteConfig } from "../config/content";
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+} = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title} - My Awkward Space</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: #f5f5f5;
-      padding: 20px;
-    }
-    
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: white;
-      padding: 40px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    nav {
-      margin-bottom: 40px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid #eee;
-    }
-    
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    
-    nav a {
-      color: #0066cc;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    
-    nav a:hover {
-      color: #004499;
-    }
-    
-    h1 {
-      margin-bottom: 20px;
-      color: #222;
-      font-size: 2.5rem;
-    }
-    
-    h2 {
-      margin-top: 30px;
-      margin-bottom: 15px;
-      color: #444;
-    }
-    
-    .blog-posts {
-      margin-top: 30px;
-    }
-    
-    .blog-post {
-      margin-bottom: 30px;
-      padding: 20px;
-      border: 1px solid #eee;
-      border-radius: 4px;
-      transition: box-shadow 0.2s;
-    }
-    
-    .blog-post:hover {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    
-    .blog-post h2 {
-      margin-top: 0;
-    }
-    
-    .blog-post-meta {
-      color: #666;
-      font-size: 0.9rem;
-      margin-bottom: 10px;
-    }
-    
-    .blog-post a {
-      color: inherit;
-      text-decoration: none;
-    }
-    
-    .blog-post a:hover h2 {
-      color: #0066cc;
-    }
-    
-    .links-list {
-      list-style: none;
-      margin-top: 20px;
-    }
-    
-    .links-list li {
-      margin-bottom: 15px;
-    }
-    
-    .links-list a {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #0066cc;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: background 0.2s;
-    }
-    
-    .links-list a:hover {
-      background: #004499;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/links">Links</a></li>
-      </ul>
-    </nav>
-    <main>
-      <slot />
-    </main>
-  </div>
-</body>
+<html lang="en" class="bg-white dark:bg-neutral-900">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Theme bootstrapping (global) -->
+    <script is:inline>
+      (function () {
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const initialTheme =
+          savedTheme === "system" ? (prefersDark ? "dark" : "light") : savedTheme;
+
+        if (initialTheme === "dark") {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      })();
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", (e) => {
+            if (localStorage.getItem("theme") === "system") {
+              if (e.matches) document.documentElement.classList.add("dark");
+              else document.documentElement.classList.remove("dark");
+            }
+          });
+      });
+    </script>
+
+    <!-- Minimal global CSS (pattern + float animation used by hero images) -->
+    <style>
+      @keyframes float {
+        0% { transform: scale(1.2); }
+        50% { transform: scale(1.3); }
+        100% { transform: scale(1.2); }
+      }
+
+      .dot-hexagon-light {
+        background-image:
+          radial-gradient(circle, #80808045 1px, transparent 1px),
+          radial-gradient(circle, #80808045 1px, transparent 1px);
+        background-size: 24px 41.57px;
+        background-position: 0 0, 12px 20.78px;
+      }
+
+      .dot-hexagon-dark {
+        background-image:
+          radial-gradient(circle, #ffffff35 1px, transparent 1px),
+          radial-gradient(circle, #ffffff35 1px, transparent 1px);
+        background-size: 24px 41.57px;
+        background-position: 0 0, 12px 20.78px;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen flex flex-col bg-white dark:bg-neutral-900 transition-colors duration-300">
+    <div class="relative flex-grow flex flex-col">
+      <!-- Site-wide background -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute inset-0 dot-hexagon-light dark:dot-hexagon-dark"></div>
+
+        <div
+          class="absolute inset-0
+          bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgba(255,255,255,0.5)_60%,rgba(255,255,255,0.9)_85%,white_100%)]
+          dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgba(23,23,23,0.5)_60%,rgba(23,23,23,0.9)_85%,rgb(23,23,23)_100%)]"
+        ></div>
+
+        <div
+          class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+          h-[1200px] w-[1200px] rounded-full bg-neutral-400 opacity-10 blur-[100px]
+          dark:bg-neutral-600 dark:opacity-15"
+          style="max-height: 100vh; max-width: 100vw;"
+        ></div>
+      </div>
+
+      <Navigation />
+
+      <main class="relative flex-1 pt-4 min-h-0">
+        <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+          <slot />
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  </body>
 </html>

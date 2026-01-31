@@ -4,8 +4,8 @@ export const siteConfig = {
   description: "A simple blog website built with Astro, featuring blog posts, an about page, and social links.",
   social: {
     github: "https://github.com/anothergeorgecoldham",
-    twitter: "https://twitter.com/",
-    email: "mailto:george@example.com",
+    twitter: "https://twitter.com/georgecoldham",
+    email: "mailto:george+mas@coldham.com.au",
   },
 };
 

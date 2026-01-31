@@ -1,0 +1,71 @@
+---
+const { class: className = "h-6 w-6", title = "My Awkward Space" } = Astro.props;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 64 64"
+  role="img"
+  aria-label={title}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title>{title}</title>
+
+  <!-- Globe outline -->
+  <circle
+    cx="32"
+    cy="32"
+    r="24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2.5"
+    opacity="0.9"
+  />
+
+  <!-- Latitude -->
+  <path d="M12 32h40" stroke="currentColor" stroke-width="2" opacity="0.55" />
+  <path d="M16 22h32" stroke="currentColor" stroke-width="2" opacity="0.45" />
+  <path d="M16 42h32" stroke="currentColor" stroke-width="2" opacity="0.45" />
+
+  <!-- Longitude -->
+  <path
+    d="M32 8c8 7 12 15 12 24s-4 17-12 24"
+    stroke="currentColor"
+    stroke-width="2"
+    fill="none"
+    opacity="0.45"
+  />
+  <path
+    d="M32 8c-8 7-12 15-12 24s4 17 12 24"
+    stroke="currentColor"
+    stroke-width="2"
+    fill="none"
+    opacity="0.45"
+  />
+
+  <!-- Hex overlay -->
+  <path
+    d="M44.5 20.5l9 5.2v10.6l-9 5.2-9-5.2V25.7l9-5.2Z"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2.5"
+    stroke-linejoin="round"
+    opacity="0.95"
+  />
+
+  <!-- Node mesh -->
+  <circle cx="41.5" cy="26.5" r="1.6" fill="currentColor" />
+  <circle cx="49.5" cy="30.5" r="1.6" fill="currentColor" />
+  <circle cx="41.5" cy="36.5" r="1.6" fill="currentColor" />
+  <circle cx="49.5" cy="38.5" r="1.6" fill="currentColor" />
+
+  <path
+    d="M41.5 26.5L49.5 30.5L41.5 36.5L49.5 38.5"
+    stroke="currentColor"
+    stroke-width="1.6"
+    fill="none"
+    opacity="0.6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

@@ -1,0 +1,193 @@
+/* =========
+   Design tokens
+   ========= */
+:root{
+  --bg: #05070a;
+  --surface: #0b0f14;
+  --surface-2: #0f1620;
+  --text: #e6edf3;
+  --muted: #93a4b5;
+  --border: rgba(230, 237, 243, 0.12);
+
+  /* accents: keep it disciplined */
+  --accent: #38bdf8;   /* azure/cyan */
+  --accent2: #22c55e;  /* restrained green */
+
+  --radius: 14px;
+  --maxw: 980px;
+
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* =========
+   Base reset
+   ========= */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; }
+
+/* =========
+   Global typography + background
+   ========= */
+body{
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.65;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 800px at 20% -10%, rgba(56, 189, 248, 0.12), transparent 55%),
+    radial-gradient(900px 700px at 90% 0%, rgba(34, 197, 94, 0.08), transparent 50%),
+    var(--bg);
+}
+
+/* =========
+   Layout frame
+   ========= */
+.page{
+  min-height: 100%;
+  padding: 28px 18px 60px;
+}
+
+.container{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  background: linear-gradient(180deg, rgba(15,22,32,0.80), rgba(11,15,20,0.85));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 34px 32px;
+}
+
+/* =========
+   Nav
+   ========= */
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+nav ul{
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+nav a{
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  border: 1px solid transparent;
+}
+
+nav a:hover{
+  color: var(--text);
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.18);
+}
+
+/* =========
+   Headings
+   ========= */
+h1{
+  margin: 0 0 16px;
+  font-size: clamp(2.1rem, 3vw, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h2{
+  margin: 28px 0 12px;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+p{ margin: 0 0 14px; color: var(--text); }
+small, .muted{ color: var(--muted); }
+
+/* =========
+   Links (content)
+   ========= */
+main a{
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+main a:hover{
+  border-bottom-color: rgba(56, 189, 248, 0.85);
+}
+
+/* =========
+   “Card” styling you can reuse
+   ========= */
+.card{
+  background: rgba(5,7,10,0.35);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 18px;
+}
+
+/* Blog list compatibility with your current markup */
+.blog-posts{ margin-top: 26px; }
+
+.blog-post{
+  margin-bottom: 18px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(5,7,10,0.25);
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.blog-post:hover{
+  transform: translateY(-1px);
+  border-color: rgba(56, 189, 248, 0.22);
+  background: rgba(5,7,10,0.35);
+}
+
+.blog-post-meta{
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-bottom: 8px;
+}
+
+.blog-post a{ color: inherit; text-decoration: none; border-bottom: 0; }
+.blog-post a:hover h2{ color: var(--accent); }
+
+/* Buttons/links list compatibility */
+.links-list{ list-style: none; padding: 0; margin: 18px 0 0; }
+.links-list li{ margin-bottom: 12px; }
+
+.links-list a{
+  display: inline-block;
+  padding: 10px 14px;
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--text);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 12px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.links-list a:hover{
+  background: rgba(56, 189, 248, 0.18);
+  border-color: rgba(56, 189, 248, 0.45);
+}
+
+/* Optional: selection glow */
+::selection{
+  background: rgba(56, 189, 248, 0.25);
+}
