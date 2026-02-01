@@ -23,25 +23,21 @@ import { aboutContent, siteConfig } from "../config/content";
 
         <div class="mt-4 flex flex-wrap gap-2">
           {aboutContent.skills.map((skill) => (
-            <span class="px-3 py-1 text-sm rounded-full border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5 text-neutral-700 dark:text-neutral-200 hover:border-accent-primary/40 hover:bg-accent-primary/10 transition-colors">
+            <span class="px-3 py-1 text-sm rounded-full border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5 text-neutral-700 dark:text-neutral-200 hover:border-accent-primary/60 hover:bg-accent-primary/20 transition-colors">
               {skill}
             </span>
           ))}
         </div>
       </div>
 
-      <!-- Avatar placeholder -->
+      <!-- Avatar -->
       <div class="flex md:justify-end">
         <div class="relative w-full md:w-[360px] h-[360px] rounded-2xl border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5 overflow-hidden">
-          <div class="w-full h-full flex items-center justify-center text-neutral-400 dark:text-neutral-600">
-            <svg class="w-24 h-24" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path
-                fill-rule="evenodd"
-                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </div>
+          <img
+            src="/assets/images/George.png"
+            alt="George Coldham"
+            class="w-full h-full object-cover"
+          />
         </div>
       </div>
     </div>
@@ -58,7 +54,7 @@ import { aboutContent, siteConfig } from "../config/content";
           {aboutContent.experience.items.map((item) => (
             <article
               class="rounded-2xl border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5 p-6
-                     hover:border-accent-primary/40 hover:bg-accent-primary/10 transition-colors"
+                     hover:border-accent-primary/60 hover:bg-accent-primary/20 transition-colors"
             >
               <p class="text-xs uppercase tracking-widest text-neutral-500 dark:text-neutral-500">
                 {item.period}
@@ -79,27 +75,40 @@ import { aboutContent, siteConfig } from "../config/content";
           ))}
         </div>
       </div>
-
       <!-- Connect -->
-      <aside>
-        <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-          {aboutContent.connect.title}
-        </h2>
+      <aside class="space-y-10">
+        <!-- What I speak about -->
+        <div>
+          <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+            {aboutContent.speaking.title}
+          </h2>
+          <div class="mt-4 rounded-2xl border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5 p-6 transition-colors hover:border-accent-primary/60 hover:bg-accent-primary/20">
+            <p class="text-neutral-600 dark:text-neutral-400 leading-7">
+              {aboutContent.speaking.description}
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-neutral-500 dark:text-neutral-400">
+              {aboutContent.speaking.topics.map((topic) => (
+                <li>— {topic}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-        <div class="mt-4 rounded-2xl border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5 p-6">
-          <p class="text-neutral-600 dark:text-neutral-400 leading-7">
-            {aboutContent.connect.description}{" "}
-            <a
-              href={aboutContent.connect.email.href}
-              class="text-accent-primary hover:text-accent-secondary underline underline-offset-4"
-            >
-              {aboutContent.connect.email.text}
-            </a>
-            .
-          </p>
-
-          <div class="mt-6 text-sm text-neutral-500">
-            <span class="block">Site: {siteConfig.name}</span>
+        <!-- Connect -->
+        <div>
+          <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+            {aboutContent.connect.title}
+          </h2>
+            <div class="mt-4 rounded-2xl border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5 p-6 transition-colors hover:border-accent-primary/60 hover:bg-accent-primary/20">
+            <p class="text-neutral-600 dark:text-neutral-400 leading-7">
+              {aboutContent.connect.description}{" "}
+              <a
+                href={aboutContent.connect.email.href}
+                class="text-accent-primary hover:text-accent-secondary underline underline-offset-4"
+              >
+                {aboutContent.connect.email.text}
+              </a>
+            </p>
           </div>
         </div>
       </aside>

@@ -1,11 +1,11 @@
 export const siteConfig = {
   name: "My Awkward Space",
-  title: "George Coldham - Microsoft Security and AI Technologist",
+  title: "George Coldham - Microsoft Security and AI Professional",
   description: "A simple blog website built with Astro, featuring blog posts, an about page, and social links.",
   social: {
     github: "https://github.com/anothergeorgecoldham",
-    twitter: "https://twitter.com/georgecoldham",
-    email: "mailto:george+mas@coldham.com.au",
+    linkedin: "https://www.linkedin.com/in/georgecoldham",
+    email: "mailto:george.coldham@microsoft.com",
   },
 };
 
@@ -29,44 +29,94 @@ export const homeContent = {
   },
 };
 
+
 export const aboutContent = {
   meta: {
-    title: "About - George Coldham",
-    description: "Learn more about George Coldham",
+    title: "About | George Coldham",
+    description:
+      "Cloud Solution Architect focused on Microsoft security, identity, and the modern browser control plane. Speaker and community organiser based in Perth, WA.",
   },
-  title: "About Me",
+
+  title: "About me",
   description:
-    "Welcome to my space on the web! This is where I share my thoughts, experiences, and learnings. I'm passionate about technology and sharing knowledge with others.",
-  skills: [
-    "Microsoft Security",
-    "Cyber Security",
-    "Generative AI",
-    "Speaking",
-  ],
-  image: {
-    src: "/assets/images/about/coder.jpg",
-    alt: "Profile",
-  },
+    "I’m George Coldham — a Cloud Solution Architect in the Microsoft ecosystem, based in Perth (Western Australia). I help teams reduce real-world risk in SaaS and AI-heavy environments, where generative and agentic AI amplify normal human behaviour into security incidents. My work sits at the intersection of identity, the browser, data protection, and automation — with a strong preference for controls that actually survive contact with humans.",
+
+  // These map to your “Focus areas” chips
+skills: [
+  // AI × Security (lead with this)
+  "Generative AI security",
+  "Agentic AI risk & controls",
+  "Microsoft Security Copilot",
+  "AI Security Posture Management (AI-SPM)",
+  "AI threat protection & abuse scenarios",
+  "Prompt, data & model risk",
+
+  // Identity, browser & SaaS
+  "Microsoft Entra (Identity)",
+  "Browser & session security",
+  "SaaS governance & OAuth risk",
+  "Conditional Access patterns",
+
+  // Data & platform controls
+  "Microsoft Defender XDR",
+  "Data protection (MIP / DLP)",
+  "Endpoint controls (Windows)",
+
+  // Architecture & practice
+  "Zero Trust architecture",
+  "Threat modelling (MITRE-aligned)",
+  "Security automation & reporting",
+  "Practical policy design",
+],
+
   experience: {
-    title: "Experience",
+    title: "What I do",
     items: [
       {
-        period: "Present",
-        position: "Cloud Solution Architect - Security Solution Area",
-        company: "Microsoft ANZ",
+        period: "Now",
+        position: "Cloud Solution Architect",
+        company: "Microsoft (ANZ)",
         description:
-          "I will fill this out later",
+          "Partner with organisations to design and improve security outcomes across identity, endpoint, data, and cloud. I focus on the modern control plane: OAuth consent, session/token abuse, unmanaged browsers, and how AI tools accelerate everyday risky behaviour.",
+      },
+      {
+        period: "Ongoing",
+        position: "Speaker & community organiser",
+        company: "Global Security Community / Global Security Bootcamp",
+        description:
+          "Build repeatable community formats that help security professionals level up together. I create practical talks, templates, and workshop material that chapters can reuse globally — with an emphasis on actionable takeaways, not theatre.",
+      },
+      {
+        period: "Always",
+        position: "Builder mindset",
+        company: "Automation, demos, and “show me” security",
+        description:
+          "I like security that you can prove. I build small tools and repeatable workflows (often using Microsoft-first approaches) to document configuration, detect drift, and turn tribal knowledge into something you can hand to the next person without a two-hour meeting.",
       },
     ],
   },
-  connect: {
-    title: "Let's Connect",
+
+  speaking: {
+    title: "What I speak about",
     description:
-      "Feel free to reach out if you want to collaborate or just say hi! You can find me on social media or drop me an",
+      "My talks focus on how modern security actually fails — and how AI accelerates both risk and opportunity. I aim to give practitioners mental models they can reuse on Monday, not just features to remember.",
+    topics: [
+      "The browser as the new security edge",
+      "AI-powered data exfiltration without malware",
+      "Security Copilot: what it changes (and what it doesn’t)",
+      "OAuth, tokens, and ‘nothing was hacked’ incidents",
+      "Agentic AI and the next wave of identity abuse",
+      "Designing controls that survive real users",
+    ],
+  },
+
+  connect: {
+    title: "Connect",
+    description:
+      "If you’re organising an event, building a security program, or want to compare notes on AI, identity, or browser risk, you can reach me at",
     email: {
-      text: "email",
-      href: "mailto:george+mas@coldham.com.au",
+      href: "mailto:george.coldham@microsoft.com",
+      text: "george.coldham@microsoft.com",
     },
   },
 };
-
