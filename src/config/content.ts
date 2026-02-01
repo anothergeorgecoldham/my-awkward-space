@@ -38,10 +38,10 @@ export const aboutContent = {
   description:
     "Welcome to my space on the web! This is where I share my thoughts, experiences, and learnings. I'm passionate about technology and sharing knowledge with others.",
   skills: [
-    "Web Development",
-    "Writing",
-    "Problem Solving",
-    "Learning",
+    "Microsoft Security",
+    "Cyber Security",
+    "Generative AI",
+    "Speaking",
   ],
   image: {
     src: "/assets/images/about/coder.jpg",
@@ -52,10 +52,10 @@ export const aboutContent = {
     items: [
       {
         period: "Present",
-        position: "Blogger & Developer",
-        company: "My Awkward Space",
+        position: "Cloud Solution Architect - Security Solution Area",
+        company: "Microsoft ANZ",
         description:
-          "Writing about technology, experiences, and learnings.",
+          "I will fill this out later",
       },
     ],
   },
@@ -65,26 +65,8 @@ export const aboutContent = {
       "Feel free to reach out if you want to collaborate or just say hi! You can find me on social media or drop me an",
     email: {
       text: "email",
-      href: "mailto:george@example.com",
+      href: "mailto:george+mas@coldham.com.au",
     },
   },
 };
 
-export const projectsContent = {
-  meta: {
-    title: "Projects - George Coldham",
-    description: "Showcase of my projects",
-  },
-  title: "My Projects",
-  description:
-    "Here are some projects I've been working on. Each project represents a journey of learning and growth.",
-  projects: [
-    {
-      title: "My Awkward Space",
-      description:
-        "A personal blog built with Astro, featuring a modern design with dark/light mode support.",
-      image: "/assets/images/projects/project1.svg",
-      href: "/",
-    },
-  ],
-};

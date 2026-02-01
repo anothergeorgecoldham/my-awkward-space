@@ -7,7 +7,6 @@ const pathname = Astro.url?.pathname ?? "/";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/posts/", label: "Posts" },
-  { href: "/projects/", label: "Projects" },
   { href: "/about/", label: "About" },
   { href: "/links/", label: "Links" },
 ];
@@ -25,16 +24,16 @@ function isActive(href) {
       <a href="/" class="flex items-center gap-3 group">
         <span
           class="inline-flex h-9 w-9 items-center justify-center rounded-lg
-                 border border-neutral-700/70 bg-white/5
-                 group-hover:border-neon-cyan/30 group-hover:bg-neon-cyan/5
+                 border border-neutral-300 dark:border-neutral-700/70 bg-neutral-100 dark:bg-white/5
+                 group-hover:border-accent-primary/40 group-hover:bg-accent-primary/10
                  transition-colors"
         >
-          <span class="text-neutral-100 group-hover:text-neon-cyan transition-colors">
+          <span class="text-neutral-700 dark:text-neutral-100 group-hover:text-accent-secondary transition-colors">
             <IconMark class="h-6 w-6" title={siteConfig.name} />
           </span>
         </span>
 
-        <span class="font-semibold tracking-tight text-neutral-200 group-hover:text-neon-cyan transition-colors">
+        <span class="font-semibold tracking-tight text-neutral-700 dark:text-neutral-200 group-hover:text-accent-secondary transition-colors">
           {siteConfig.name}
         </span>
       </a>
@@ -48,8 +47,8 @@ function isActive(href) {
             class={
               "px-3 py-2 rounded-lg text-sm font-medium transition-colors border " +
               (isActive(item.href)
-                ? "text-neutral-100 bg-neon-cyan/10 border-neon-cyan/30 shadow-neon-cyan"
-                : "text-neutral-400 hover:text-neon-cyan border-transparent hover:bg-neon-cyan/5")
+                ? "text-neutral-900 dark:text-neutral-100 bg-accent-primary/10 border-accent-primary/40 shadow-accent"
+                : "text-neutral-600 dark:text-neutral-400 hover:text-accent-secondary border-transparent hover:bg-accent-secondary/10")
             }
           >
             {item.label}
@@ -61,7 +60,7 @@ function isActive(href) {
         <!-- Theme toggle -->
         <button
           id="theme-toggle"
-          class="p-2 rounded-lg text-neutral-400 hover:text-neon-cyan hover:bg-neon-cyan/5 transition-colors"
+          class="p-2 rounded-lg text-neutral-600 dark:text-neutral-400 hover:text-accent-secondary hover:bg-accent-secondary/10 transition-colors"
           aria-label="Toggle dark mode"
           type="button"
         >
