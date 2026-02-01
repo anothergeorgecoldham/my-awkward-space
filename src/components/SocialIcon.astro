@@ -1,0 +1,37 @@
+---
+import "iconify-icon";
+import simpleIcons from "@iconify-json/simple-icons/icons.json";
+
+const { name, class: className = "w-5 h-5" } = Astro.props;
+
+// iconify simple-icons keys are lowercase, sometimes with dashes.
+// for your set, these are straightforward.
+const iconKeyMap = {
+  linkedin: "linkedin",
+  github: "github",
+  youtube: "youtube",
+  x: "x",
+  threads: "threads",
+  bluesky: "bluesky",
+  instagram: "instagram",
+  tiktok: "tiktok",
+};
+
+const key = iconKeyMap[name];
+const icon = key ? simpleIcons.icons[key] : null;
+
+// Build the inline SVG (Iconify icon web component also works, but this avoids runtime fetching)
+const body = icon?.body ?? null;
+const width = icon?.width ?? 24;
+const height = icon?.height ?? 24;
+---
+
+{body ? (
+  <svg
+    class={className}
+    viewBox={`0 0 ${width} ${height}`}
+    fill="currentColor"
+    aria-hidden="true"
+    set:html={body}
+  />
+) : null}

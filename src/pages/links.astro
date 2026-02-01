@@ -1,55 +1,65 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { siteConfig } from "../config/content";
+import SocialIcon from "../components/SocialIcon.astro";
 
-const links = [
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/georgecoldham/",
-  },
-  {
-    name: "GitHub",
-    url: "https://github.com/anothergeorgecoldham",
-  },
-  {
-    name: "YouTube",
-    url: "https://youtube.com/@georgecoldham",
-  },
-  {
-    name: "X (Twitter)",
-    url: "https://x.com/georgecoldham",
-  },
-  {
-    name: "Threads",
-    url: "https://threads.net/@gcoldham",
-  },
-  {
-    name: "Bluesky",
-    url: "https://bsky.app/profile/george.coldham.com.au",
-  },
-  {
-    name: "Instagram",
-    url: "https://www.instagram.com/gcoldham/",
-  },
-  {
-    name: "TikTok",
-    url: "http://tiktok.com/georgecoldham",
-  },
-];
+ const links = [
+   {
+     name: "LinkedIn",
+     url: "https://www.linkedin.com/in/georgecoldham/",
+     icon: "linkedin",
+   },
+   {
+     name: "GitHub",
+     url: "https://github.com/anothergeorgecoldham",
+     icon: "github",
+   },
+   {
+     name: "YouTube",
+     url: "https://youtube.com/@georgecoldham",
+     icon: "youtube",
+   },
+   {
+     name: "X (Twitter)",
+     url: "https://x.com/georgecoldham",
+     icon: "x",
+   },
+   {
+     name: "Threads",
+     url: "https://threads.net/@gcoldham",
+     icon: "threads",
+   },
+   {
+     name: "Bluesky",
+     url: "https://bsky.app/profile/george.coldham.com.au",
+     icon: "bluesky",
+   },
+   {
+     name: "Instagram",
+     url: "https://www.instagram.com/gcoldham/",
+     icon: "instagram",
+   },
+   {
+     name: "TikTok",
+     url: "http://tiktok.com/georgecoldham",
+     icon: "tiktok",
+   },
+ ];
+
 ---
 
 <Layout title={`Links - ${siteConfig.name}`} description="Where to find me across the web.">
-  <section class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-10">
+  <section class="mx-auto w-full max-w-md px-4 py-10">
     <header class="mb-10">
       <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
         Links
       </h1>
       <p class="mt-3 text-lg leading-7 text-neutral-600 dark:text-neutral-400 max-w-3xl">
-        Where I publish, post, and occasionally argue with computers.
+        You probably followed a QR code to get here.
       </p>
     </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 gap-3">
       {links.map((link) => (
         <a
           href={link.url}
@@ -63,13 +73,14 @@ const links = [
                    hover:border-accent-primary/40 hover:bg-accent-primary/10"
           >
             <div class="flex items-start justify-between gap-4">
-              <div>
+              <div class="flex items-center gap-3">
+                <span class="text-neutral-500 group-hover:text-accent-secondary transition-colors">
+                  <SocialIcon name={link.icon} class="w-5 h-5" />
+                </span>
+
                 <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-accent-secondary transition-colors">
                   {link.name}
                 </h2>
-                <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-                  {link.description}
-                </p>
               </div>
 
               <span class="text-neutral-500 group-hover:text-accent-secondary transition-colors">

@@ -13,7 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "astro": "^5.17.1"
+    "@iconify-json/simple-icons": "^1.2.69",
+    "astro": "^5.17.1",
+    "iconify-icon": "^3.0.2",
+    "simple-icons": "^16.7.0"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",
