@@ -4,7 +4,7 @@ import { aboutContent, siteConfig } from "../config/content";
 ---
 
 <Layout title={aboutContent.meta.title} description={aboutContent.meta.description}>
-  <section class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-10">
+  <section class="py-10">
     <!-- Header -->
     <header class="mb-10">
       <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
@@ -60,7 +60,7 @@ import { aboutContent, siteConfig } from "../config/content";
               class="rounded-2xl border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5 p-6
                      hover:border-accent-primary/40 hover:bg-accent-primary/10 transition-colors"
             >
-              <p class="text-xs uppercase tracking-widest text-neutral-500">
+              <p class="text-xs uppercase tracking-widest text-neutral-500 dark:text-neutral-500">
                 {item.period}
               </p>
 
@@ -91,7 +91,7 @@ import { aboutContent, siteConfig } from "../config/content";
             {aboutContent.connect.description}{" "}
             <a
               href={aboutContent.connect.email.href}
-              class="text-accent-primary hover:text-accent-primarySoft underline underline-offset-4"
+              class="text-accent-primary hover:text-accent-secondary underline underline-offset-4"
             >
               {aboutContent.connect.email.text}
             </a>

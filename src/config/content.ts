@@ -1,6 +1,6 @@
 export const siteConfig = {
-  name: "George Coldham",
-  title: "George Coldham - My Awkward Space",
+  name: "My Awkward Space",
+  title: "George Coldham - Microsoft Security and AI Technologist",
   description: "A simple blog website built with Astro, featuring blog posts, an about page, and social links.",
   social: {
     github: "https://github.com/anothergeorgecoldham",
@@ -19,8 +19,8 @@ export const homeContent = {
       href: "/about/",
     },
     posts: {
-      text: "Read Posts",
-      href: "/posts/",
+      text: "Read Blog",
+      href: "/blog/",
     },
   },
   images: {
