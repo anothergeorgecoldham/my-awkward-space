@@ -1,0 +1,145 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Fetch speaker data from Sessionize API
+const speakerResponse = await fetch('https://sessionize.com/api/speaker/json/d4m9fc7xg4');
+const speakerData = await speakerResponse.json();
+
+// Extract the speaker profile from nested structure
+const speaker = speakerData.speaker || {};
+const profileImage = speaker.photoLargeUrl || speaker.photoUrl;
+const bio = speaker.bio || '';
+const firstName = speaker.firstName || '';
+const lastName = speaker.lastName || '';
+const tagline = speaker.tagline || '';
+const sessions = speakerData.sessions || [];
+
+// Extract unique talk titles and descriptions
+const talks = sessions.map(session => ({
+  title: session.title,
+  description: session.description,
+}));
+---
+
+<Layout title="Speaker Info | George Coldham" description="Speaker biography and information for George Coldham">
+  <section class="py-10">
+    <!-- Header -->
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+        Speaker Information
+      </h1>
+      <p class="mt-3 text-lg leading-7 text-neutral-600 dark:text-neutral-400 max-w-3xl">
+        Resources for conference organisers and event planners
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_360px] gap-10">
+      <!-- Main content -->
+      <div class="space-y-8">
+        <!-- Bio -->
+        <div>
+        <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">Biography</h2>
+        <div class="rounded-2xl border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5 p-6">
+            {tagline && (
+            <p class="text-accent-primary font-semibold mb-3">
+                {tagline}
+            </p>
+            )}
+            <p class="text-neutral-600 dark:text-neutral-400 leading-7">
+            {bio}
+            </p>
+        </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="space-y-6">
+        <!-- Photo -->
+        <div>
+          <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-4">Headshot</h3>
+          <div class="relative w-full h-[360px] rounded-2xl border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5 overflow-hidden">
+            {profileImage ? (
+              <img
+                src={profileImage}
+                alt="George Coldham"
+                class="w-full h-full object-cover"
+              />
+            ) : (
+              <img
+                src="/assets/images/George.png"
+                alt="George Coldham"
+                class="w-full h-full object-cover"
+              />
+            )}
+          </div>
+        </div>
+
+        <!-- Quick Facts -->
+        <div>
+          <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-4">Quick Facts</h3>
+          <div class="rounded-2xl border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5 p-6 space-y-3 text-sm">
+            <div>
+              <span class="text-neutral-500 dark:text-neutral-400">Role:</span>
+              <span class="text-neutral-900 dark:text-neutral-100 ml-2">Cloud Solution Architect</span>
+            </div>
+            <div>
+              <span class="text-neutral-500 dark:text-neutral-400">Company:</span>
+              <span class="text-neutral-900 dark:text-neutral-100 ml-2">Microsoft ANZ</span>
+            </div>
+            <div>
+              <span class="text-neutral-500 dark:text-neutral-400">Location:</span>
+              <span class="text-neutral-900 dark:text-neutral-100 ml-2">Perth, Australia</span>
+            </div>
+            <div>
+              <span class="text-neutral-500 dark:text-neutral-400">Focus:</span>
+              <span class="text-neutral-900 dark:text-neutral-100 ml-2">Security & AI</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Speaking Topics / Sessions - Full Width -->
+    {talks.length > 0 && (
+    <div class="mt-12">
+        <h2 class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 mb-4">
+        Speaking Topics
+        </h2>
+
+        <div class="grid grid-cols-1 gap-4">
+        {talks.map((talk) => (
+            <article
+            class="rounded-2xl border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5 p-6
+                    transition-all duration-300
+                    hover:border-accent-primary/40 hover:bg-accent-primary/5 hover:shadow-accentGlow"
+            >
+            <h3 class="text-lg sm:text-xl font-bold text-neutral-900 dark:text-neutral-100">
+                {talk.title}
+            </h3>
+
+            {talk.description && (
+                <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400 leading-6">
+                {talk.description}
+                </p>
+            )}
+            </article>
+        ))}
+        </div>
+    </div>
+    )}
+
+        <!-- Contact -->
+        <div class="mt-12">
+        <h2 class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 mb-4">Contact</h2>
+
+        <div class="rounded-2xl border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5 p-6">
+            <p class="text-neutral-600 dark:text-neutral-400 leading-7">
+            For speaking inquiries:
+            <a href="mailto:george.coldham@microsoft.com" class="text-accent-primary hover:text-accent-secondary underline">
+                george.coldham@microsoft.com
+            </a>
+            </p>
+        </div>
+        </div>
+    </section>
+</Layout>
