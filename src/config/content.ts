@@ -42,40 +42,36 @@ export const aboutContent = {
   meta: {
     title: "About | George Coldham",
     description:
-      "Cloud Solution Architect focused on Microsoft security, identity, and the modern browser control plane. Speaker and community organiser based in Perth, WA.",
+      "Cloud Solution Architect focused on Microsoft Security and AI. Community Leader and Public Speaker based in Perth, Western Australia.",
   },
 
   title: "About me",
   description:
-    "I’m George Coldham — a Cloud Solution Architect in the Microsoft ecosystem, based in Perth (Western Australia). I help teams reduce real-world risk in SaaS and AI-heavy environments, where generative and agentic AI amplify normal human behaviour into security incidents. My work sits at the intersection of identity, the browser, data protection, and automation — with a strong preference for controls that actually survive contact with humans.",
+    "I’m George Coldham — a Cloud Solution Architect at Microsoft in the Security Solution area, based in Perth (Western Australia). I help teams reduce real-world risk in SaaS and AI-heavy environments, where generative and agentic AI amplify normal human behaviour into security incidents. My work sits at the intersection of threat protection, identity, SaaS, data protection, and automation — with a strong preference for controls that actually survive contact with humans.",
 
   // These map to your “Focus areas” chips
 skills: [
   // AI × Security (lead with this)
-  "Generative AI security",
-  "Agentic AI risk & controls",
+  "Generative AI Security",
+  "Agentic AI Risk & Controls",
   "Microsoft Security Copilot",
-  "AI Security Posture Management (AI-SPM)",
-  "AI threat protection & abuse scenarios",
-  "Prompt, data & model risk",
+  "AI Security Posture Management (AISPM)",
+  "AI Threat Protection & Abuse Scenarios",
+  "Prompt, Data & Model Risk",
 
   // Identity, browser & SaaS
   "Microsoft Entra (Identity)",
-  "Browser & session security",
-  "SaaS governance & OAuth risk",
-  "Conditional Access patterns",
+  "Microsoft Threat Protection",
+  "Browser & Session Security",
+  "SaaS Governance & OAuth Risk",
 
   // Data & platform controls
   "Microsoft Defender XDR",
-  "Data protection (MIP / DLP)",
-  "Endpoint controls (Windows)",
 
   // Architecture & practice
-  "Zero Trust architecture",
-  "Threat modelling (MITRE-aligned)",
-  "Security automation & reporting",
-  "Practical policy design",
-],
+  "Zero Trust Architecture",
+  "Cloud Security Posture Management (CSPM)",
+],  
 
   experience: {
     title: "What I do",
@@ -85,16 +81,17 @@ skills: [
         position: "Cloud Solution Architect",
         company: "Microsoft (ANZ)",
         description:
-          "Partner with organisations to design and improve security outcomes across identity, endpoint, data, and cloud. I focus on the modern control plane: OAuth consent, session/token abuse, unmanaged browsers, and how AI tools accelerate everyday risky behaviour.",
+          "Partner with enterprise scale organisations to design and improve security outcomes across threat protection, identity, data, devices and cloud. I focus on the modern control plane: OAuth consent, session/token abuse, unmanaged browsers, and how AI tools accelerate productivity but could enable risky behaviour.",
       },
       {
-        period: "Ongoing",
-        position: "Speaker & community organiser",
-        company: "Global Security Community / Global Security Bootcamp",
-        description:
-          "Build repeatable community formats that help security professionals level up together. I create practical talks, templates, and workshop material that chapters can reuse globally — with an emphasis on actionable takeaways, not theatre.",
+      period: "Ongoing",
+      position: "Speaker & community organiser",
+      company:
+        "Global Security Community · Perth Global AI Community · Perth Microsoft Security Meetup · Perth GitHub Meetup",
+      description:
+      "I present locally and internationally on emerging security topics, helping practitioners understand how new technologies and AI change risk at scale. I also build and enable professional communities — either by bringing practitioners together directly, or by creating repeatable formats and resources that others can reuse to run sustainable communities.",
       },
-      {
+     {
         period: "Always",
         position: "Builder mindset",
         company: "Automation, demos, and “show me” security",

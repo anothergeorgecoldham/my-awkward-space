@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { siteConfig } from "../config/content";
+---
+
+<Layout title="Connect with George | QR Code" description="Scan to connect with George Coldham">
+  <section class="py-10 flex flex-col items-center justify-center min-h-[60vh]">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 mb-3">
+        Connect with George
+      </h1>
+      <p class="text-lg text-neutral-600 dark:text-neutral-400">
+        Scan the QR code to connect
+      </p>
+    </div>
+
+    <div class="p-8 rounded-2xl border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5">
+      <!-- Replace this with your actual QR code image -->
+      <img 
+        src="/assets/images/qr-code.png" 
+        alt="QR Code to connect with George Coldham"
+        class="w-64 h-64 sm:w-80 sm:h-80"
+      />
+    </div>
+
+    <div class="mt-8 text-center">
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+        Or visit: <a href="https://my.awkward.space/links" class="text-accent-primary hover:text-accent-secondary underline">my.awkward.space/links</a>
+      </p>
+    </div>
+  </section>
+</Layout>
