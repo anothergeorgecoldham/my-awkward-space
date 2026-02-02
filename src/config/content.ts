@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "My Awkward Space",
   title: "George Coldham - Microsoft Security and AI Professional",
-  description: "A simple blog website built with Astro, featuring blog posts, an about page, and social links.",
+  description: "A professional portfolio for George Coldham, Microsoft Security and AI Professional and public speaker.",
   social: {
     github: "https://github.com/anothergeorgecoldham",
     linkedin: "https://www.linkedin.com/in/georgecoldham",
@@ -10,9 +10,9 @@ export const siteConfig = {
 };
 
 export const homeContent = {
-  title: "Welcome to My Awkward Space",
+  title: "My Awkward Space",
   description:
-    "A collection of my thoughts, ideas, and experiences. Exploring the intersection of technology, creativity, and life.",
+    "I’m George Coldham. I work at the intersection of Security and AI in the Microsoft ecosystem — threat protection, identity, browser/session control planes, and the messy reality of how data leaks without malware. I speak at conferences and organise community events to help security professionals level up together.",
   buttons: {
     about: {
       text: "View About",
