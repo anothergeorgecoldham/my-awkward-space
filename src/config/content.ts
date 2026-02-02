@@ -27,6 +27,14 @@ export const homeContent = {
     light: "https://multiplepage-portfolio.edgeone.app/assets/images/tech-background-light.svg",
     dark: "/assets/images/tech-background-dark.svg",
   },
+  // Set to null to hide the upcoming talk section
+  upcomingTalk: {
+    title: "Zero Trust in a SaaS and AI World",
+    conference: "NDC Sydney 2026",
+    date: "April 23, 2026",
+    location: "Sydney, Australia",
+    url: "https://ndcsydney.com/agenda/zero-trust-in-a-saas-and-ai-world-0ye5/00u4q0zg1bj",
+  },
 };
 
 
