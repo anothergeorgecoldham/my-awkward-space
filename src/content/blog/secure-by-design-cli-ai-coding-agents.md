@@ -1,28 +1,32 @@
 ---
 title: "Secure by Design for CLI AI Coding Agents"
 description: "How to securely run GitHub Copilot CLI and Claude Code on developer machines. Prevent prompt injection, repository poisoning, and over-scoped tokens using deterministic controls."
-date: "2026-02-12"
-updated: "2026-02-12"
+date: 2026-02-12
+updated: 2026-02-12
 author: "George Coldham"
 category: "AI Security"
-tags:
-  - ai-agents
-  - developer-security
-  - github
-  - llm-security
-  - architecture
-slug: "secure-by-design-cli-ai-coding-agents"
 readTime: "8 min read"
+slug: "secure-by-design-cli-ai-coding-agents"
+tags:
+  - AI Agents
+  - Developer Security
+  - GitHub
+  - LLM Security
+  - Architecture
+image: "/assets/images/blog/secure-cli-ai-agents-banner.png"
+imageAlt: "Secure CLI AI coding agents banner illustrating developer security controls"
+canonicalURL: "https://my.awkward.space/blog/secure-by-design-cli-ai-coding-agents"
+draft: false
 
 ogTitle: "Secure by Design for CLI AI Coding Agents"
 ogDescription: "We gave LLMs a shell. Now what? Practical controls for running Copilot CLI and Claude Code safely."
-ogImage: "/images/blog/secure-cli-ai-agents-banner.png"
+ogImage: "/assets/images/blog/secure-cli-ai-agents-banner.png"
 ogType: "article"
 
 twitterCard: "summary_large_image"
 twitterTitle: "Secure by Design for CLI AI Coding Agents"
 twitterDescription: "Deterministic controls beat prompt warnings. Secure your AI coding agents properly."
-twitterImage: "/images/blog/secure-cli-ai-agents-banner.png"
+twitterImage: "/assets/images/blog/secure-cli-ai-agents-banner.png"
 
 keywords:
   - GitHub Copilot CLI security
@@ -31,6 +35,8 @@ keywords:
   - repository poisoning
   - secure AI development
 ---
+
+![Secure CLI AI coding agents banner illustrating developer security controls](/assets/images/blog/secure-cli-ai-agents-banner.png)
 
 # Secure by Design for CLI AI Coding Agents
 
@@ -201,5 +207,5 @@ We gave LLMs a shell. Now we should design accordingly.
 
 ---
 
-This is my curiosity and ideas synthesized and correlated with my friendly chatgpt.  
+This is my curiosity and ideas synthesized and correlated with my friendly chatgpt.
 

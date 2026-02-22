@@ -27,6 +27,25 @@ const { Content } = post;
     <meta name="generator" content={Astro.generator} />
     <title>{post.frontmatter.title} - {siteConfig.name}</title>
     <meta name="description" content={post.frontmatter.description || ''} />
+
+    {/* Canonical */}
+    {post.frontmatter.canonicalURL && <link rel="canonical" href={post.frontmatter.canonicalURL} />}
+
+    {/* Open Graph */}
+    <meta property="og:title" content={post.frontmatter.ogTitle || post.frontmatter.title} />
+    <meta property="og:description" content={post.frontmatter.ogDescription || post.frontmatter.description || ''} />
+    <meta property="og:type" content={post.frontmatter.ogType || 'article'} />
+    {post.frontmatter.ogImage && <meta property="og:image" content={post.frontmatter.ogImage} />}
+    {post.frontmatter.canonicalURL && <meta property="og:url" content={post.frontmatter.canonicalURL} />}
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content={post.frontmatter.twitterCard || 'summary_large_image'} />
+    <meta name="twitter:title" content={post.frontmatter.twitterTitle || post.frontmatter.ogTitle || post.frontmatter.title} />
+    <meta name="twitter:description" content={post.frontmatter.twitterDescription || post.frontmatter.ogDescription || post.frontmatter.description || ''} />
+    {(post.frontmatter.twitterImage || post.frontmatter.ogImage) && <meta name="twitter:image" content={post.frontmatter.twitterImage || post.frontmatter.ogImage} />}
+
+    {/* Keywords */}
+    {post.frontmatter.keywords && <meta name="keywords" content={post.frontmatter.keywords.join(', ')} />}
     <script is:inline>
       (function () {
         const savedTheme = localStorage.getItem("theme") || "dark";
