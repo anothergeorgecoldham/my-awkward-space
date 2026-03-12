@@ -179,8 +179,8 @@ More often, they emerge from the quiet accumulation of configuration gaps that o
 
 ## References
 
-[^1]: WA Office of the Auditor General. *Microsoft 365 Security Controls Across State Entities*. https://audit.wa.gov.au/reports-and-publications/reports/microsoft-365-security-controls-state-entities/
+- WA Office of the Auditor General. *Microsoft 365 Security Controls Across State Entities*. https://audit.wa.gov.au/reports-and-publications/reports/microsoft-365-security-controls-state-entities/
 
-[^2]: Cyber Daily. *WA gov Microsoft 365 issues led to $71,000 being stolen and exposure of child data*. https://www.cyberdaily.au/security/13308-wa-gov-microsoft-365-issues-led-to-71-000-being-stolen-and-exposure-of-child-data
+- Cyber Daily. *WA gov Microsoft 365 issues led to $71,000 being stolen and exposure of child data*. https://www.cyberdaily.au/security/13308-wa-gov-microsoft-365-issues-led-to-71-000-being-stolen-and-exposure-of-child-data
 
-[^3]: Computer Weekly. *WA auditor flags weak Microsoft 365 security controls across state entities*. https://www.computerweekly.com/news/366639954/WA-auditor-flags-weak-Microsoft-365-security-controls-across-state-entities
+- Computer Weekly. *WA auditor flags weak Microsoft 365 security controls across state entities*. https://www.computerweekly.com/news/366639954/WA-auditor-flags-weak-Microsoft-365-security-controls-across-state-entities

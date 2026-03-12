@@ -65,7 +65,7 @@ Content.
 
 ## References
 
-[^1]: Source name. *Title*. URL
+- Source name. *Title*. URL
 ```
 
 ## Field Reference

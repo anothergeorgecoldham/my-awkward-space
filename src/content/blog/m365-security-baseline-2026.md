@@ -205,9 +205,9 @@ It is maintaining them consistently.
 
 ## References
 
-[^1]: Microsoft Learn. *Authentication strengths*. https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-strengths  
+- Microsoft Learn. *Authentication strengths*. https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-strengths
 
-[^2]: Microsoft Learn. *Block legacy authentication*. https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-block-legacy-authentication  
+- Microsoft Learn. *Block legacy authentication*. https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-block-legacy-authentication
 
-[^3]: Microsoft Learn. *Privileged Identity Management*. https://learn.microsoft.com/en-us/entra/id-governance/privileged-identity-management/pim-configure  
+- Microsoft Learn. *Privileged Identity Management*. https://learn.microsoft.com/en-us/entra/id-governance/privileged-identity-management/pim-configure
 
