@@ -14,20 +14,20 @@ tags:
   - Phishing Resistant MFA
   - Security Architecture
   - Microsoft Entra
-image: "/assets/images/blog/passkeys-authentication-humans-banner.png"
+image: "/assets/images/blog/passkeys-authentication-humans-banner.webp"
 imageAlt: "Passkeys authentication banner illustrating phishing-resistant login"
 canonicalURL: "https://my.awkward.space/blog/authentication-for-humans-why-passkeys-finally-make-sense"
 draft: false
 
 ogTitle: "Authentication for Humans Why Passkeys Finally Make Sense"
 ogDescription: "Why passkeys are the first meaningful redesign of authentication in decades."
-ogImage: "/assets/images/blog/passkeys-authentication-humans-banner.png"
+ogImage: "/assets/images/blog/passkeys-authentication-humans-banner.webp"
 ogType: "article"
 
 twitterCard: "summary_large_image"
 twitterTitle: "Authentication for Humans Why Passkeys Finally Make Sense"
 twitterDescription: "Passkeys fix the authentication model instead of patching it. Here's why they finally make sense."
-twitterImage: "/assets/images/blog/passkeys-authentication-humans-banner.png"
+twitterImage: "/assets/images/blog/passkeys-authentication-humans-banner.webp"
 
 keywords:
   - passkeys
@@ -37,7 +37,7 @@ keywords:
   - passwordless authentication
 ---
 
-![Passkeys Authentication Banner](/assets/images/blog/passkeys-authentication-humans-banner.png)
+![Passkeys Authentication Banner](/assets/images/blog/passkeys-authentication-humans-banner.webp)
 
 # Authentication for Humans Why Passkeys Finally Make Sense
 

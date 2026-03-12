@@ -13,20 +13,20 @@ tags:
   - GitHub
   - LLM Security
   - Architecture
-image: "/assets/images/blog/secure-cli-ai-agents-banner.png"
+image: "/assets/images/blog/secure-cli-ai-agents-banner.webp"
 imageAlt: "Secure CLI AI coding agents banner illustrating developer security controls"
 canonicalURL: "https://my.awkward.space/blog/secure-by-design-cli-ai-coding-agents"
 draft: false
 
 ogTitle: "Secure by Design for CLI AI Coding Agents"
 ogDescription: "We gave LLMs a shell. Now what? Practical controls for running Copilot CLI and Claude Code safely."
-ogImage: "/assets/images/blog/secure-cli-ai-agents-banner.png"
+ogImage: "/assets/images/blog/secure-cli-ai-agents-banner.webp"
 ogType: "article"
 
 twitterCard: "summary_large_image"
 twitterTitle: "Secure by Design for CLI AI Coding Agents"
 twitterDescription: "Deterministic controls beat prompt warnings. Secure your AI coding agents properly."
-twitterImage: "/assets/images/blog/secure-cli-ai-agents-banner.png"
+twitterImage: "/assets/images/blog/secure-cli-ai-agents-banner.webp"
 
 keywords:
   - GitHub Copilot CLI security
@@ -36,7 +36,7 @@ keywords:
   - secure AI development
 ---
 
-![Secure CLI AI coding agents banner illustrating developer security controls](/assets/images/blog/secure-cli-ai-agents-banner.png)
+![Secure CLI AI coding agents banner illustrating developer security controls](/assets/images/blog/secure-cli-ai-agents-banner.webp)
 
 # Secure by Design for CLI AI Coding Agents
 

@@ -9,7 +9,7 @@
   - tags: YAML list format, Title Case
   - readTime: format as "X min read"
   - canonicalURL: always use full URL with https://my.awkward.space/blog/ prefix
-  - image paths: relative to public/, e.g. /images/blog/your-banner.png
+  - image paths: relative to public/, e.g. /images/blog/your-banner.webp
   - ogTitle/twitterTitle: can differ from title for social optimisation
   - ogDescription/twitterDescription: shorter, punchier than description
   - keywords: lowercase, SEO-focused search terms
@@ -29,27 +29,27 @@ slug: "your-slug-here"
 tags:
   - Tag One
   - Tag Two
-image: "/assets/images/blog/your-slug-banner.png"
+image: "/assets/images/blog/your-slug-banner.webp"
 imageAlt: "Descriptive alt text for the banner image"
 canonicalURL: "https://my.awkward.space/blog/your-slug-here"
 draft: false
 
 ogTitle: ""
 ogDescription: ""
-ogImage: "/assets/images/blog/your-slug-banner.png"
+ogImage: "/assets/images/blog/your-slug-banner.webp"
 ogType: "article"
 
 twitterCard: "summary_large_image"
 twitterTitle: ""
 twitterDescription: ""
-twitterImage: "/assets/images/blog/your-slug-banner.png"
+twitterImage: "/assets/images/blog/your-slug-banner.webp"
 
 keywords:
   - keyword one
   - keyword two
 ---
 
-![Banner alt text](/assets/images/blog/your-slug-banner.png)
+![Banner alt text](/assets/images/blog/your-slug-banner.webp)
 
 # Article Title
 

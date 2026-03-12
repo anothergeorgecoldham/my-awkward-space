@@ -13,20 +13,20 @@ tags:
   - Phishing Resistant MFA
   - Identity Architecture
   - Security Engineering
-image: "/assets/images/blog/webauthn-technical-deep-dive-banner.png"
+image: "/assets/images/blog/webauthn-technical-deep-dive-banner.webp"
 imageAlt: "WebAuthn technical deep dive banner illustrating authentication flows"
 canonicalURL: "https://my.awkward.space/blog/webauthn-deep-dive-and-where-passkeys-fall-short"
 draft: false
 
 ogTitle: "WebAuthn Under the Hood and Where Passkeys Still Fall Short"
 ogDescription: "A technical breakdown of WebAuthn flows and where passkeys still have limitations."
-ogImage: "/assets/images/blog/webauthn-technical-deep-dive-banner.png"
+ogImage: "/assets/images/blog/webauthn-technical-deep-dive-banner.webp"
 ogType: "article"
 
 twitterCard: "summary_large_image"
 twitterTitle: "WebAuthn Under the Hood and Where Passkeys Still Fall Short"
 twitterDescription: "What actually happens in a WebAuthn flow, and where passkeys still don't solve everything."
-twitterImage: "/assets/images/blog/webauthn-technical-deep-dive-banner.png"
+twitterImage: "/assets/images/blog/webauthn-technical-deep-dive-banner.webp"
 
 keywords:
   - WebAuthn
@@ -36,7 +36,7 @@ keywords:
   - identity architecture
 ---
 
-![WebAuthn Technical Banner](/assets/images/blog/webauthn-technical-deep-dive-banner.png)
+![WebAuthn Technical Banner](/assets/images/blog/webauthn-technical-deep-dive-banner.webp)
 
 # WebAuthn Under the Hood and Where Passkeys Still Fall Short
 

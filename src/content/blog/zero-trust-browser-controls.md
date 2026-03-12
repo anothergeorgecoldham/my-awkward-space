@@ -13,20 +13,20 @@ tags:
   - Browser Controls
   - Cloud Security
   - Identity Security
-image: "/assets/images/blog/zero-trust-browser-vaporwave.png"
+image: "/assets/images/blog/zero-trust-browser-vaporwave.webp"
 imageAlt: "Cyan glowing hexagon over dark vaporwave grid representing secure browser enforcement"
 canonicalURL: "https://my.awkward.space/blog/zero-trust-browser-controls"
 draft: false
 
 ogTitle: "How to Enforce Zero Trust at the Browser Layer"
 ogDescription: "Practical Zero Trust controls for SaaS and AI environments."
-ogImage: "/assets/images/blog/zero-trust-browser-vaporwave.png"
+ogImage: "/assets/images/blog/zero-trust-browser-vaporwave.webp"
 ogType: "article"
 
 twitterCard: "summary_large_image"
 twitterTitle: "Zero Trust at the Browser Layer"
 twitterDescription: "Security that preserves productivity while reducing SaaS and AI risk."
-twitterImage: "/assets/images/blog/zero-trust-browser-vaporwave.png"
+twitterImage: "/assets/images/blog/zero-trust-browser-vaporwave.webp"
 
 keywords:
   - Zero Trust browser
@@ -36,7 +36,7 @@ keywords:
   - session telemetry
 ---
 
-![Cyan glowing hexagon over dark vaporwave grid representing secure browser enforcement](/assets/images/blog/zero-trust-browser-vaporwave.png)
+![Cyan glowing hexagon over dark vaporwave grid representing secure browser enforcement](/assets/images/blog/zero-trust-browser-vaporwave.webp)
 
 # Zero Trust in a SaaS and AI World  
 ## Enforcing Zero Trust at the Browser Layer

@@ -13,20 +13,20 @@ tags:
   - Browser Security
   - OAuth
   - Session Hijacking
-image: "/assets/images/blog/zero-trust-browser-vaporwave.png"
+image: "/assets/images/blog/zero-trust-browser-vaporwave.webp"
 imageAlt: "Dark charcoal vaporwave grid with glowing cyan hexagon representing browser security architecture"
 canonicalURL: "https://my.awkward.space/blog/zero-trust-browser-perimeter"
 draft: false
 
 ogTitle: "Zero Trust in a SaaS and AI World"
 ogDescription: "Why the browser is now the most important control point in modern SaaS and AI security."
-ogImage: "/assets/images/blog/zero-trust-browser-vaporwave.png"
+ogImage: "/assets/images/blog/zero-trust-browser-vaporwave.webp"
 ogType: "article"
 
 twitterCard: "summary_large_image"
 twitterTitle: "Zero Trust in a SaaS and AI World"
 twitterDescription: "Most breaches now start in the browser."
-twitterImage: "/assets/images/blog/zero-trust-browser-vaporwave.png"
+twitterImage: "/assets/images/blog/zero-trust-browser-vaporwave.webp"
 
 keywords:
   - Zero Trust architecture
@@ -36,7 +36,7 @@ keywords:
   - session hijacking
 ---
 
-![Dark charcoal vaporwave grid with glowing cyan hexagon representing browser security architecture](/assets/images/blog/zero-trust-browser-vaporwave.png)
+![Dark charcoal vaporwave grid with glowing cyan hexagon representing browser security architecture](/assets/images/blog/zero-trust-browser-vaporwave.webp)
 
 # Zero Trust in a SaaS and AI World  
 ## The Browser Is the Enterprise Perimeter
