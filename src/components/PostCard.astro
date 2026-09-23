@@ -1,0 +1,11 @@
+---
+import { formatDate } from "../utils/date";
+const { post, featured = false } = Astro.props;
+const cover = post.image === "/assets/images/blog/when-your-management-plane-becomes-the-attack-surface-banner.png" ? "/assets/images/blog/management-plane-card.webp" : post.image;
+---
+<article class:list={["post-card", { "post-featured": featured }]}>
+  <a class="post-link" href={post.href}>
+    {cover && <img class="post-cover" src={cover} alt="" width="1200" height="630" loading="lazy" decoding="async" />}
+    <div class="post-copy"><p class="eyebrow"><time datetime={String(post.date).slice(0,10)}>{formatDate(post.date)}</time><span> · {post.readTime}</span></p><h3>{post.title}</h3><p>{post.description}</p><span class="read-link">Read the article <span aria-hidden="true">↗</span></span></div>
+  </a>
+</article>

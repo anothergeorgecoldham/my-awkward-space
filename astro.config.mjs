@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com', // Update this with your actual Netlify URL
+  site: 'https://my.awkward.space',
   vite: {
     plugins: [tailwindcss()],
   },

@@ -1,162 +1,31 @@
 ---
-import Navigation from "../../components/Navigation.astro";
-import Footer from "../../components/Footer.astro";
+import Layout from "../../layouts/Layout.astro";
 import { siteConfig } from "../../config/content";
-
+import { formatDate } from "../../utils/date";
 export async function getStaticPaths() {
-  const blogPosts = Object.values(
-    import.meta.glob('../../content/blog/*.md', { eager: true })
-  );
-  
-  return blogPosts.map((post) => {
-    const slug = post.file.split('/').pop().replace('.md', '');
-    return {
-      params: { slug },
-      props: { post },
-    };
-  });
+  const posts = Object.values(import.meta.glob("../../content/blog/*.md", { eager: true }));
+  return posts.map((post: any) => ({ params: { slug: post.frontmatter.slug || post.file.split("/").pop().replace(".md", "") }, props: { post } }));
 }
-
 const { post } = Astro.props;
 const { Content } = post;
+const f = post.frontmatter;
 ---
-
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{post.frontmatter.title} - {siteConfig.name}</title>
-    <meta name="description" content={post.frontmatter.description || ''} />
-
-    {/* Canonical */}
-    {post.frontmatter.canonicalURL && <link rel="canonical" href={post.frontmatter.canonicalURL} />}
-
-    {/* Open Graph */}
-    <meta property="og:title" content={post.frontmatter.ogTitle || post.frontmatter.title} />
-    <meta property="og:description" content={post.frontmatter.ogDescription || post.frontmatter.description || ''} />
-    <meta property="og:type" content={post.frontmatter.ogType || 'article'} />
-    {post.frontmatter.ogImage && <meta property="og:image" content={post.frontmatter.ogImage} />}
-    {post.frontmatter.canonicalURL && <meta property="og:url" content={post.frontmatter.canonicalURL} />}
-
-    {/* Twitter Card */}
-    <meta name="twitter:card" content={post.frontmatter.twitterCard || 'summary_large_image'} />
-    <meta name="twitter:title" content={post.frontmatter.twitterTitle || post.frontmatter.ogTitle || post.frontmatter.title} />
-    <meta name="twitter:description" content={post.frontmatter.twitterDescription || post.frontmatter.ogDescription || post.frontmatter.description || ''} />
-    {(post.frontmatter.twitterImage || post.frontmatter.ogImage) && <meta name="twitter:image" content={post.frontmatter.twitterImage || post.frontmatter.ogImage} />}
-
-    {/* Keywords */}
-    {post.frontmatter.keywords && <meta name="keywords" content={post.frontmatter.keywords.join(', ')} />}
-    <script is:inline>
-      (function () {
-        const savedTheme = localStorage.getItem("theme") || "dark";
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        ).matches;
-        const initialTheme =
-          savedTheme === "system"
-            ? prefersDark
-              ? "dark"
-              : "light"
-            : savedTheme;
-
-        if (initialTheme === "dark") {
-          document.documentElement.classList.add("dark");
-        } else {
-          document.documentElement.classList.remove("dark");
-        }
-      })();
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        window
-          .matchMedia("(prefers-color-scheme: dark)")
-          .addEventListener("change", (e) => {
-            if (localStorage.getItem("theme") === "system") {
-              if (e.matches) {
-                document.documentElement.classList.add("dark");
-              } else {
-                document.documentElement.classList.remove("dark");
-              }
-            }
-          });
-      });
-    </script>
-    <style>
-      .dot-hexagon-light {
-        background-image: radial-gradient(
-            circle,
-            #80808045 1px,
-            transparent 1px
-          ),
-          radial-gradient(circle, #80808045 1px, transparent 1px);
-        background-size: 24px 41.57px;
-        background-position:
-          0 0,
-          12px 20.78px;
-      }
-
-      .dot-hexagon-dark {
-        background-image: radial-gradient(
-            circle,
-            #ffffff35 1px,
-            transparent 1px
-          ),
-          radial-gradient(circle, #ffffff35 1px, transparent 1px);
-        background-size: 24px 41.57px;
-        background-position:
-          0 0,
-          12px 20.78px;
-      }
-    </style>
-  </head>
-  <body
-    class="min-h-screen flex flex-col bg-white dark:bg-neutral-900 transition-colors duration-300"
-  >
-    <div class="relative flex-grow flex flex-col">
-      <div class="absolute inset-0 z-0">
-        <div
-          class="absolute inset-0 -z-10 dot-hexagon-light dark:dot-hexagon-dark"
-        >
-        </div>
-        <div
-          class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgba(255,255,255,0.5)_60%,rgba(255,255,255,0.9)_85%,white_100%)] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgba(23,23,23,0.5)_60%,rgba(23,23,23,0.9)_85%,rgb(23,23,23)_100%)] -z-10"
-        >
-        </div>
-        <div
-          class="absolute left-0 right-0 top-0 -z-10 m-auto h-[1200px] w-[1200px] rounded-full bg-neutral-400 opacity-10 blur-[100px]"
-        >
-        </div>
-      </div>
-
-      <Navigation />
-      <section class="relative z-20 w-full max-w-3xl mx-auto mt-24 mb-12 px-4">
-        <article class="prose dark:prose-invert prose-neutral max-w-none">
-          <div class="mb-8">
-            <a 
-              href="/blog/" 
-              class="inline-flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors mb-4 no-underline"
-            >
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-              Back to blog
-            </a>
-            <h1 class="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-4xl mt-4 mb-4">
-              {post.frontmatter.title}
-            </h1>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">
-              Published on {post.frontmatter.date}
-            </p>
-          </div>
-          <div class="text-neutral-800 dark:text-neutral-200">
-            <Content />
-          </div>
-        </article>
-      </section>
-    </div>
-
-    <Footer />
-  </body>
-</html>
+<Layout title={`${f.title} - ${siteConfig.name}`} description={f.description || ""} customSEO>
+  <Fragment slot="head">
+    {f.canonicalURL && <link rel="canonical" href={f.canonicalURL} />}
+    <meta property="og:title" content={f.ogTitle || f.title} />
+    <meta property="og:description" content={f.ogDescription || f.description || ""} />
+    <meta property="og:type" content={f.ogType || "article"} />
+    {f.ogImage && <meta property="og:image" content={f.ogImage} />}
+    {f.canonicalURL && <meta property="og:url" content={f.canonicalURL} />}
+    <meta name="twitter:card" content={f.twitterCard || "summary_large_image"} />
+    <meta name="twitter:title" content={f.twitterTitle || f.ogTitle || f.title} />
+    <meta name="twitter:description" content={f.twitterDescription || f.ogDescription || f.description || ""} />
+    {(f.twitterImage || f.ogImage) && <meta name="twitter:image" content={f.twitterImage || f.ogImage} />}
+    {f.keywords && <meta name="keywords" content={f.keywords.join(", ")} />}
+  </Fragment>
+  <article class="article-shell">
+    <header class="article-header"><a class="text-link" href="/blog/">← All writing</a><h1>{f.title}</h1><p class="eyebrow">Published <time datetime={String(f.date).slice(0,10)}>{formatDate(f.date)}</time>{f.readTime && <> · {f.readTime}</>}</p></header>
+    <div class="article-body"><Content /></div>
+  </article>
+</Layout>

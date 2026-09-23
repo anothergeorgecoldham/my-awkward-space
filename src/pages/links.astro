@@ -45,64 +45,9 @@ import SocialIcon from "../components/SocialIcon.astro";
      icon: "tiktok",
    },
  ];
-
 ---
-
-<Layout title={`Links - ${siteConfig.name}`} description="Where to find me across the web.">
-  <section class="mx-auto w-full max-w-md px-4 py-10">
-    <header class="mb-10">
-      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-        Links
-      </h1>
-      <p class="mt-3 text-lg leading-7 text-neutral-600 dark:text-neutral-400 max-w-3xl">
-        You probably followed a QR code to get here.
-      </p>
-    </header>
-
-    <div class="grid grid-cols-1 gap-3">
-      {links.map((link) => (
-        <a
-          href={link.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group block"
-        >
-          <article
-            class="rounded-2xl border border-neutral-300 dark:border-neutral-800/70 bg-neutral-100 dark:bg-white/5 p-6
-                   transition-all duration-300
-                   hover:border-accent-primary/40 hover:bg-accent-primary/10"
-          >
-            <div class="flex items-start justify-between gap-4">
-              <div class="flex items-center gap-3">
-                <span class="text-neutral-500 group-hover:text-accent-secondary transition-colors">
-                  <SocialIcon name={link.icon} class="w-5 h-5" />
-                </span>
-
-                <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-accent-secondary transition-colors">
-                  {link.name}
-                </h2>
-              </div>
-
-              <span class="text-neutral-500 group-hover:text-accent-secondary transition-colors">
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2.5"
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  ></path>
-                </svg>
-              </span>
-            </div>
-          </article>
-        </a>
-      ))}
-    </div>
-  </section>
+<Layout title={`Links - ${siteConfig.name}`} description="Where to find George Coldham across the web.">
+<div class="link-page"><header class="page-heading"><p class="eyebrow accent-warm">Keep in touch</p><h1>Let's connect.</h1><p class="lead">You probably followed a QR code to get here. These are the places to find me.</p></header>
+<div class="social-links">{links.map(link => <a class="social-link" href={link.url} target="_blank" rel="noopener noreferrer"><SocialIcon name={link.icon} class="social-icon" /><h2>{link.name}</h2><span class="link-arrow" aria-hidden="true">↗</span></a>)}</div>
+</div>
 </Layout>
