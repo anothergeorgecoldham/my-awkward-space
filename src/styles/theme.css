@@ -68,14 +68,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .featured-writing{display:grid;grid-template-columns:1.2fr 1fr;gap:36px}
 .post-link{display:block;height:100%;border-radius:4px}
 .post-cover{width:100%;height:auto;aspect-ratio:1.91;object-fit:cover;border-radius:4px;background:var(--panel)}
-.post-copy{padding:22px 0}
+.post-copy{padding:22px 16px}
 .post-copy h3{margin:10px 0 13px;font-size:clamp(1.25rem,2.3vw,1.65rem)}
 .post-copy>p:not(.eyebrow){font-size:15px;line-height:1.75}
 .read-link{display:inline-flex;align-items:center;gap:20px;min-height:44px;margin-top:12px;color:var(--accent);font-size:13px;font-weight:600}
 .selected-posts{border-top:1px solid var(--line)}
 .selected-posts .post-cover{display:none}
 .selected-posts .post-card{border-bottom:1px solid var(--line)}
-.selected-posts .post-copy{padding:25px 0}
+.selected-posts .post-copy{padding:25px 16px}
 .post-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 42px;padding-bottom:60px}
 .page-heading{padding:60px 0 38px}
 .page-heading .eyebrow{margin-bottom:14px}
