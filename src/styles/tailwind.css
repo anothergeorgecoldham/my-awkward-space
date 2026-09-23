@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+/* Preserve the existing class-driven theme toggle under Tailwind CSS 4. */
+@custom-variant dark (&:where(.dark, .dark *));

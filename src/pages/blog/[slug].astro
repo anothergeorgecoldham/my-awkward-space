@@ -4,7 +4,9 @@ import Footer from "../../components/Footer.astro";
 import { siteConfig } from "../../config/content";
 
 export async function getStaticPaths() {
-  const blogPosts = await Astro.glob('../../content/blog/*.md');
+  const blogPosts = Object.values(
+    import.meta.glob('../../content/blog/*.md', { eager: true })
+  );
   
   return blogPosts.map((post) => {
     const slug = post.file.split('/').pop().replace('.md', '');
