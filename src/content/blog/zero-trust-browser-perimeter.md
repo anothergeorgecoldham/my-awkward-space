@@ -41,18 +41,11 @@ keywords:
 # Zero Trust in a SaaS and AI World  
 ## The Browser Is the Enterprise Perimeter
 
-For years we said the perimeter was dead. We moved to cloud, adopted SaaS, embraced remote work, and redesigned identity around Zero Trust. But if you look at real breaches over the past few years, something becomes obvious.
+For years, we said the perimeter was dead. We moved to cloud services, adopted SaaS, embraced remote work, and redesigned identity around Zero Trust. Yet if you look at the way many recent compromises unfold, a different perimeter becomes visible: modern attacks often begin not with network exploitation, but inside the browser.
 
-Most modern compromises do not begin with network exploitation.  
-They begin in the browser.
+An engineer pastes proprietary code into a generative AI tool, a finance user approves a malicious OAuth application, or an attacker replays a stolen SaaS session token and bypasses the MFA event entirely. These are no longer unusual edge cases. They are recognisable incident patterns in environments where most daily work happens through web applications.
 
-An engineer pastes proprietary code into a generative AI tool.  
-A finance user approves a malicious OAuth application.  
-An attacker replays a stolen SaaS session token and bypasses MFA entirely.
-
-These are no longer edge cases. They are mainstream incident patterns.
-
-The browser is no longer just a rendering engine. It is the operating environment for SaaS, identity, and AI driven workflows. And yet many organisations still treat it as a trusted surface rather than a security boundary.
+The browser is therefore no longer just a rendering engine. It has become the operating environment for SaaS, identity, and AI-driven workflows, yet many organisations still treat it as a trusted surface rather than a security boundary in its own right.
 
 ---
 
@@ -60,22 +53,11 @@ The browser is no longer just a rendering engine. It is the operating environmen
 
 Identity is widely described as the new perimeter. That position is formalised in [NIST SP 800-207 Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final), which defines continuous verification and policy enforcement close to the resource as foundational principles.
 
-But SaaS changed something important.
-
-Data now lives inside browser sessions.  
-OAuth grants API access without passwords.  
-Session tokens bypass MFA once issued.  
-Generative AI tools accept unstructured prompts that may include intellectual property or regulated data.
+But SaaS changed something important. Data now lives inside browser sessions, OAuth grants can provide API access without exposing a password, and session tokens can carry authenticated access beyond the original MFA event. Generative AI tools add another route by accepting unstructured prompts that may contain intellectual property or regulated data.
 
 Industry reporting reflects this shift. The [Microsoft Digital Defense Report](https://www.microsoft.com/en-us/security/business/microsoft-digital-defense-report) highlights adversary-in-the-middle phishing and token theft. Incident analysis in the [Mandiant M-Trends Report](https://www.mandiant.com/resources/m-trends) and the [CrowdStrike Global Threat Report](https://www.crowdstrike.com/global-threat-report/) shows attackers increasingly leveraging valid session tokens to persist inside cloud and SaaS environments without triggering traditional alerts.
 
-When attackers compromise a SaaS session, they do not need lateral movement. They already have authenticated access to the application layer.
-
-Session hijacking.  
-OAuth abuse.  
-Shadow AI usage.
-
-These are browser-native attack paths.
+When attackers compromise a SaaS session, they may not need lateral movement in the traditional network sense because they already have authenticated access to the application layer. Session hijacking, OAuth abuse, and shadow AI usage are all browser-native paths that sit awkwardly outside security models built primarily around network boundaries and endpoint processes.
 
 ---
 
@@ -87,14 +69,10 @@ If we map these behaviours to the [MITRE ATT&CK Enterprise Matrix](https://attac
 - Abuse of Delegated Credentials  
 - Exfiltration Over Web Services  
 
-The tactics are not new. The execution layer is.
-
-If your Zero Trust strategy stops at device compliance and MFA, you have hardened the front door while leaving the interaction layer largely implicit.
-
-The browser has become the operational perimeter whether we planned for it or not.
+The tactics are not new, but the execution layer has changed. If a Zero Trust strategy stops at device compliance and MFA, it may harden the front door while leaving the interaction layer largely implicit. The browser has become an operational perimeter whether we deliberately planned for it or not.
 
 ---
 
-In **Part 2**, we will look at how to enforce Zero Trust at the browser layer using deterministic, productivity-preserving controls.
+In **Part 2**, we will look at how to enforce Zero Trust at the browser layer using deterministic controls that reduce risk without making ordinary work unnecessarily difficult.
 
 👉 Read Part 2: [Enforcing Zero Trust at the Browser Layer](/blog/zero-trust-browser-controls)

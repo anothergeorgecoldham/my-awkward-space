@@ -29,11 +29,11 @@ export const homeContent = {
   },
   // Set to null to hide the upcoming talk section
   upcomingTalk: {
-    title: "Zero Trust in a SaaS and AI World",
-    conference: "NDC Sydney 2026",
-    date: "April 23, 2026",
-    location: "Sydney, Australia",
-    url: "https://ndcsydney.com/agenda/zero-trust-in-a-saas-and-ai-world-0ye5/00u4q0zg1bj",
+    title: "Authentication for humans, why passkeys finally make sense.",
+    conference: "DDD Perth 2026",
+    date: "October 3, 2026",
+    location: "Optus Stadium, Perth",
+    url: "https://dddperth.com/agenda/2026/talk/1240238",
   },
 };
 

@@ -41,29 +41,23 @@ keywords:
 # Zero Trust in a SaaS and AI World  
 ## Enforcing Zero Trust at the Browser Layer
 
-If the browser is now the enterprise perimeter, it must also become a first-class enforcement point.
-
-Zero Trust at the browser layer is not about blocking everything. It is about introducing deterministic controls where risk actually manifests.
+If the browser is now an enterprise perimeter, it also needs to become a first-class enforcement point. Applying Zero Trust at this layer does not mean blocking everything users might do; it means introducing deterministic controls close to the places where risk actually appears.
 
 ---
 
 ## In-Browser Data Protection
 
-Traditional DLP focused on email gateways and file inspection. That made sense when data primarily left through attachments.
-
-Today, sensitive data leaves through copy and paste into web applications, uploads to SaaS platforms, and direct interaction with AI tools.
+Traditional DLP focused on email gateways and file inspection, which made sense when data primarily left an organisation through attachments. Today, sensitive information can just as easily leave through copy and paste into a web application, an upload to a SaaS platform, or direct interaction with an AI tool.
 
 Policy enforcement close to the resource aligns directly with [NIST SP 800-207](https://csrc.nist.gov/publications/detail/sp/800-207/final), which emphasises policy enforcement points operating near the protected asset.
 
-The objective is precision, not noise.
+The objective should be precise enforcement at the point of use rather than a broad collection of noisy controls that users immediately learn to work around.
 
 ---
 
 ## OAuth Governance
 
-OAuth is a productivity enabler and a quiet privilege escalation path.
-
-Research from the [Cloud Security Alliance](https://cloudsecurityalliance.org/) and SaaS-focused incident investigations demonstrate how delegated permissions can be abused when consent is not governed.
+OAuth is both a productivity enabler and a quiet path to excessive privilege. Research from the [Cloud Security Alliance](https://cloudsecurityalliance.org/) and SaaS-focused incident investigations shows how delegated permissions can be abused when consent is not governed carefully.
 
 Zero Trust requires:
 
@@ -71,26 +65,21 @@ Zero Trust requires:
 - Enforcing least privilege scopes  
 - Continuously monitoring granted access  
 
-Consent should not equal blind trust.
+Consent should not be treated as permanent or blind trust. The grant needs to remain visible, reviewable, and proportionate to what the application actually requires.
 
 ---
 
 ## Tenant and Session Context Control
 
-Many compromises occur because valid tokens are replayed from unmanaged environments or because users authenticate into unintended tenants.
+Many compromises occur because valid tokens are replayed from unmanaged environments or because users authenticate into unintended tenants. Tenant restrictions can limit corporate identities to approved environments, while session telemetry helps detect anomalous behaviour after the initial authentication event. Impossible travel, abnormal API volume, or unusual data-access patterns should be reasons to re-evaluate the session rather than assume that a successful login settled the question indefinitely.
 
-Tenant restrictions ensure corporate identities interact only with approved environments.
-
-Session telemetry enables detection of anomalous behaviour after authentication. Impossible travel, abnormal API volume, or unusual data access patterns should trigger re-evaluation.
-
-Authentication is a checkpoint.  
-Session validation must be continuous.
+Authentication is a checkpoint; session validation needs to continue after it.
 
 ---
 
 ## Managed Browser Enforcement
 
-Enterprise-managed browsers and browser isolation platforms enforce policy directly in the execution layer.
+Enterprise-managed browsers and browser isolation platforms can enforce policy directly in the execution layer where the interaction is taking place.
 
 They can:
 
@@ -99,24 +88,15 @@ They can:
 - Gate uploads to unsanctioned applications  
 - Provide richer telemetry for detection teams  
 
-If the browser is the execution environment for SaaS and AI, it must also be an enforceable control surface.
+If the browser is the execution environment for SaaS and AI, it also needs to be an enforceable control surface rather than a largely invisible gap between identity and the application.
 
 ---
 
 ## The Balance
 
-Security teams often oscillate between two extremes. Lock everything down or trust everything implicitly.
+Security teams often oscillate between two extremes: lock everything down or trust everything implicitly. Zero Trust at the browser layer is more useful when it is treated as a question of balance. Engineers will use AI tools, finance teams will integrate SaaS platforms, and marketing will collaborate across organisational boundaries; attempting to remove those behaviours entirely is unlikely to survive contact with the business.
 
-Zero Trust at the browser layer is about balance.
-
-Engineers will use AI tools.  
-Finance will integrate SaaS platforms.  
-Marketing will collaborate across boundaries.
-
-The objective is to reduce high-risk behaviour while preserving legitimate work.
-
-Security that ignores productivity fails.  
-Productivity without guardrails creates incidents.
+The objective is to reduce high-risk behaviour while preserving legitimate work. Security that ignores productivity will be bypassed or rejected, while productivity without meaningful guardrails will eventually create incidents.
 
 ---
 

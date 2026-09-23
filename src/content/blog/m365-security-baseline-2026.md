@@ -39,7 +39,7 @@ For a growing number of organisations, Microsoft 365 isn't just another SaaS pro
 
 That concentration means identity security isn't just one layer of defence. It's often the primary layer. If an attacker can compromise an identity in your tenant, they can usually reach email, files, and internal communication without needing to move laterally in the traditional sense. They're already inside the applications that matter.
 
-And here's the uncomfortable part: the majority of cloud breaches don't involve software exploits. They don't require zero-days or sophisticated malware. They rely on control gaps — weak authentication, incomplete policies, monitoring blind spots, and configuration drift that quietly accumulates over time.
+The uncomfortable part is that many cloud breaches do not require a software exploit, a zero-day, or sophisticated malware. They rely instead on familiar control gaps: weak authentication, incomplete policies, monitoring blind spots, and configuration drift that quietly accumulates over time.
 
 This post outlines a practical security baseline for Microsoft 365. It's not exhaustive and it won't cover every edge case, but it focuses on the controls that consistently make the biggest difference in reducing real-world breach paths.
 
@@ -53,7 +53,7 @@ Before getting into the baseline itself, it's worth looking at five issues that 
 
 ### 1. Phishable MFA for privileged access
 
-Most organisations have enabled MFA at this point, and that's genuinely good progress. But not all MFA is created equal, and the distinction matters more than most people realise.
+Most organisations have enabled MFA at this point, and that is genuinely good progress. The remaining problem is that not all MFA is created equal, and the distinction matters more than many people realise.
 
 Methods like SMS codes, voice verification, and email OTP all satisfy the technical requirement for a second factor. The problem is that they're all vulnerable to interception or social engineering. An attacker running a real-time phishing proxy can capture an SMS code just as easily as a password. From the identity provider's perspective, the login looks completely legitimate.
 
@@ -69,15 +69,15 @@ Legacy authentication protocols — IMAP, POP3, SMTP AUTH, and older Office clie
 
 That makes them a bypass path. An attacker who obtains a username and password can authenticate directly via a legacy protocol, completely sidestepping any Conditional Access policies you've configured. It doesn't matter how sophisticated your policies are if there's a protocol-level side door.
 
-The frustrating part is that many organisations leave legacy authentication enabled not because they need it, but because they've never checked. In most modern environments, it can be blocked entirely. Where there are genuine dependencies — older line-of-business applications or shared mailboxes with legacy integrations — those should be scoped tightly and monitored closely rather than left as a blanket exception.
+Many organisations leave legacy authentication enabled not because they need it, but because nobody has checked recently. In most modern environments, it can be blocked entirely. Where genuine dependencies remain — older line-of-business applications or shared mailboxes with legacy integrations — they should be scoped tightly and monitored closely rather than left as a blanket exception.
 
 ---
 
 ### 3. Unrestricted MFA registration
 
-This one is underappreciated. One of the first things an attacker does after compromising a credential is register their own MFA method — a phone number, an authenticator app, a security key. Once that's done, they have persistent access that survives a password reset.
+Unrestricted MFA registration is an underappreciated risk. One of the first things an attacker may do after compromising a credential is register their own MFA method — a phone number, an authenticator app, or a security key. Once that is done, they may retain a path back into the account even after a password reset.
 
-Think about it: you detect a compromised account, reset the password, and assume the problem is resolved. But if the attacker registered their own authenticator app during the window they had access, they can pass MFA challenges with their own device. The account is still compromised.
+It is easy to detect a compromised account, reset the password, and assume the problem is resolved. If the attacker registered their own authenticator app during the access window, however, they may still be able to satisfy MFA challenges from their device. The password has changed, but the account has not necessarily been recovered.
 
 Controlling MFA registration is essential. Requiring existing MFA or a Temporary Access Pass to register new methods means an attacker with just a stolen password can't bootstrap their own second factor. Alerting on authentication method changes gives your security team visibility into this activity, which is often one of the earliest indicators of a compromised identity.
 
@@ -89,7 +89,7 @@ Inbox forwarding rules are a favourite persistence mechanism during business ema
 
 This is particularly dangerous in invoice fraud scenarios. The attacker watches for payment-related conversations, then injects themselves at the right moment with modified bank details. Because they've been reading the entire thread, the fraudulent message often looks completely legitimate to the recipient.
 
-The simplest mitigation is disabling external auto-forwarding at the transport level. This is a tenant-wide setting in Exchange Online that prevents any mailbox rule from forwarding email outside the organisation. For the rare cases where external forwarding is genuinely needed, it can be granted as a specific exception rather than left open by default.
+The simplest mitigation is to disable external auto-forwarding at the transport level. This can prevent mailbox rules from automatically forwarding email outside the organisation. For the relatively rare cases where external forwarding is genuinely needed, access can be granted as a specific exception rather than left open by default.
 
 It's worth auditing existing forwarding rules too. In many tenants, there are rules that were created months or years ago that nobody remembers setting up.
 
@@ -97,11 +97,11 @@ It's worth auditing existing forwarding rules too. In many tenants, there are ru
 
 ### 5. Limited audit logging
 
-Logging is one of those controls that everyone agrees is important but few organisations invest in until something goes wrong. And by then, the logs you needed either don't exist or have already been overwritten.
+Logging is one of those controls that almost everyone agrees is important, yet many organisations do not invest in it until something goes wrong. By then, the records needed for an investigation may never have been collected or may already have passed their retention period.
 
 The default audit log retention in Microsoft 365 is relatively short. If an incident is discovered weeks or months after the initial compromise — which is common — you may not have the logs to understand what happened. That makes scoping the incident harder, extends recovery timelines, and can turn a containable event into a much larger problem.
 
-Beyond retention, there's the question of coverage. Are you logging sign-in activity, mailbox access, file downloads, admin actions, and changes to security configuration? Each of these tells a different part of the story during an investigation. Missing any one of them can leave blind spots that an attacker has already exploited.
+Beyond retention, there is the question of coverage. Are you logging sign-in activity, mailbox access, file downloads, admin actions, and changes to security configuration? Each source tells a different part of the story during an investigation, and omissions can leave blind spots around activity an attacker has already performed.
 
 Extending audit log retention and ensuring comprehensive coverage across workloads isn't glamorous, but it's one of the highest-value investments you can make in incident readiness.
 
@@ -177,7 +177,7 @@ Prevention is important, but detection gives you the ability to catch what preve
 
 ## The governance layer
 
-Here's the thing about security baselines: they decay. Not because someone deliberately weakens them, but because environments change and entropy is relentless.
+Security baselines decay. Usually this is not because someone deliberately weakens them, but because environments change and operational entropy is relentless.
 
 A Conditional Access policy gets an exception for a migration project that never gets removed. A new admin is granted standing privileges because PIM activation felt like too much friction. Legacy authentication gets re-enabled for one application and stays on for everything. Each individual change seems reasonable in context. Over time, they accumulate.
 
@@ -185,17 +185,17 @@ Configuration drift is the quiet killer of cloud security posture. The controls 
 
 Maintaining a documented baseline and regularly reviewing tenant configuration against it is the only reliable way to prevent this erosion. Tools like Microsoft Secure Score, Entra recommendations, and third-party posture management solutions can help automate this, but they work best when you have a clearly defined target state to measure against.
 
-Without governance, most environments eventually accumulate enough gaps for an attacker to chain together into a viable breach path.
+Without governance, environments tend to accumulate gaps that an attacker may be able to chain into a viable breach path.
 
 ---
 
 ## Final thought
 
-Microsoft 365 security doesn't fail because the platform lacks controls. The tooling is genuinely comprehensive — arguably more capable than most organisations realise.
+Microsoft 365 security does not usually fail because the platform lacks controls. The tooling is genuinely comprehensive — arguably more capable than many organisations realise.
 
 It fails when those controls are implemented partially, inconsistently, or only after an incident forces the conversation. A tenant with a handful of well-enforced policies is in a dramatically better position than one with dozens of policies that are riddled with exceptions.
 
-The difficult part isn't deploying the controls. It's maintaining them consistently over time, through staff changes, project pressures, and the slow drift of operational convenience.
+Deploying the controls is only the beginning. The difficult part is maintaining them consistently through staff changes, project pressure, and the slow drift towards operational convenience.
 
 A practical baseline, regularly reviewed and honestly maintained, is worth more than a perfect-on-paper architecture that nobody checks.
 

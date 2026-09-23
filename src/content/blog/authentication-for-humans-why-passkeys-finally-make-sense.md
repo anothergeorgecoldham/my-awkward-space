@@ -41,34 +41,30 @@ keywords:
 
 # Authentication for Humans Why Passkeys Finally Make Sense
 
-Passwords have had a good run.
+Passwords have had a very good run. Nearly sixty years after their introduction in early multi-user systems, they are still the default authentication model for a remarkable amount of the internet and enterprise IT. At this point, that should probably make us a little uncomfortable.
 
-Nearly sixty years after their introduction in early multi-user systems, they are still the default authentication model. That should make us uncomfortable.
+The **Verizon Data Breach Investigations Report** continues to show stolen credentials as one of the most common initial access vectors year after year[^1]. The specific techniques change, phishing kits improve, and defenders add new layers of detection, but the underlying problem remains stubbornly familiar: attackers keep finding ways to obtain or misuse credentials that users are expected to protect.
 
-The **Verizon Data Breach Investigations Report** consistently shows stolen credentials as one of the most common initial access vectors year after year[^1]. The tools have changed. The pattern hasn’t.
+Over the years, we have added increasingly sophisticated controls around passwords. We have password managers to help people create and store stronger credentials, OTP applications and push notifications to add another factor, and conditional access systems to assess the context of a login. All of those things improve the situation, but they still compensate for the same basic design decision underneath it all: we are asking humans to manage shared secrets.
 
-We keep adding layers — password managers, OTP apps, push MFA — but the core design flaw remains:
-
-We are asking humans to manage shared secrets.
-
-Passkeys are different. They fix the model instead of patching it.
+Passkeys are interesting because they change that underlying model rather than simply adding another layer around it.
 
 ---
 
 ## The Structural Problem with Passwords
 
-Passwords are:
+Passwords are fundamentally transferable secrets. They are:
 
 - Shared secrets  
 - Reusable across services  
 - Transferable if stolen  
 - Dependent on human memory and judgement  
 
-Even when you add MFA, you are often just adding another human-dependent step.
+Even when MFA is added, many common methods still introduce another step that depends on the user interpreting what is happening correctly. A person may need to recognise a fake login page, notice that an authentication request is unexpected, or understand that an OTP should not be entered into a page they do not trust.
 
-Adversary-in-the-middle phishing frameworks such as **Evilginx** demonstrate how OTP-based MFA can be intercepted and replayed in real time[^2]. If a user can type it, an attacker can proxy it.
+Adversary-in-the-middle phishing frameworks such as **Evilginx** demonstrate this limitation particularly well. OTP-based MFA can be intercepted and replayed in real time[^2]. The attacker does not necessarily need to break the MFA mechanism; they can place themselves between the user and the legitimate service and relay the authentication flow.
 
-We have been trying to train users to spot pixel-perfect phishing pages under time pressure.
+That leaves us asking ordinary users to distinguish a legitimate login experience from an increasingly convincing imitation, often while they are busy, distracted, or simply trying to get some work done.
 
 That was always optimistic.
 
@@ -78,43 +74,35 @@ That was always optimistic.
 
 Passkeys are built on **FIDO2** standards from the [FIDO Alliance](https://fidoalliance.org/) and implemented through **WebAuthn**, defined by the [World Wide Web Consortium (W3C)](https://www.w3.org/TR/webauthn-2/)[^3].
 
-When you create a passkey:
+At a high level, creating a passkey involves the following:
 
 - The device generates a public/private key pair.
 - The public key is stored by the service.
-- The private key never leaves the device.
+- The private credential remains protected by the authenticator or, for a syncable passkey, within the platform's credential ecosystem.
 
-There is no shared secret.
+There is no password for the user to remember, type, reuse, or accidentally disclose. Authentication becomes a cryptographic challenge-response exchange rather than a comparison against a shared secret.
 
-Authentication becomes a cryptographic challenge-response exchange. Not a password comparison.
-
-In 2022, Apple, Google, and Microsoft jointly accelerated passkey adoption across platforms[^4]. That wasn’t marketing theatre. It was an ecosystem shift.
+In 2022, Apple, Google, and Microsoft jointly accelerated passkey adoption across their platforms[^4]. That was an important ecosystem shift: passkeys moved beyond standards discussions and became something ordinary users could realistically encounter on the devices and services they already use.
 
 ---
 
 ## Why Passkeys Break Phishing
 
-Here’s the important bit.
-
-WebAuthn enforces **origin binding**.
+One of the most important properties of WebAuthn is **origin binding**.
 
 If you register a passkey at:
 
 https://login.contoso.com
 
-That key cannot be used at:
+that credential cannot simply be presented to:
 
 https://login-contoso-security-check.com
 
-Even if the fake site looks identical.
+The phishing site can reproduce the branding, layout, wording, and every other visual cue that a user might normally rely on. The user can even be completely convinced that they are looking at the legitimate service. The credential is still bound to the legitimate relying party.
 
-Even if the user is convinced.
+The browser and authenticator enforce that relationship as part of the protocol. The private credential will not produce a valid assertion for an unrelated relying party, so the security decision no longer rests entirely on whether the user notices that something looks wrong.
 
-The browser enforces domain matching at the protocol level. The private key simply will not sign a challenge for the wrong origin.
-
-This removes the weakest component in the entire authentication chain: user judgement.
-
-Traditional MFA assumes users can detect deception. Passkeys assume they can’t — and design around that reality.
+Traditional MFA often assumes that users can recognise deception reliably. Passkeys move a meaningful part of that responsibility into the protocol itself, where it can be enforced consistently rather than depending on human judgement at exactly the moment an attacker is trying to manipulate it.
 
 That’s a material improvement.
 
@@ -122,27 +110,17 @@ That’s a material improvement.
 
 ## Credential Stuffing Doesn’t Work Here
 
-Credential stuffing works because passwords are reused.
+Credential stuffing works because passwords are reused. Large breach datasets are fed into automated tooling, which attempts username and password combinations against other services at scale. The technique has been widely documented in both consumer and enterprise breaches[^1].
 
-Large breach datasets are fed into automated tooling, which attempts combinations at scale. This technique has been widely documented in both consumer and enterprise breaches[^1].
-
-Passkeys are scoped per service. Each relying party gets its own key pair. There is nothing transferable.
-
-No password list helps an attacker.
+Passkeys are scoped to a relying party, with each service receiving its own credential. There is no reusable password for an attacker to recover from one breach and try somewhere else, so a list of stolen passwords offers no equivalent shortcut.
 
 ---
 
 ## Enterprise Reality
 
-Let’s not oversell it.
+It is important not to oversell this. Modern identity systems such as **Microsoft Entra ID** support passkeys cleanly and at scale[^5], and they align well with cloud-first identity and Zero Trust models. Legacy on-premises Active Directory environments are more nuanced, however. Tier-0 systems and domain controllers still commonly rely on certificate-based authentication and smart cards.
 
-Modern identity systems such as **Microsoft Entra ID** support passkeys cleanly and at scale[^5]. They align well with cloud-first identity and Zero Trust models.
-
-Legacy on-prem Active Directory environments are more nuanced. Tier-0 systems and domain controllers still commonly rely on certificate-based authentication and smart cards.
-
-Passkeys are ready for modern identity platforms.
-
-They are not a magic eraser for every legacy protocol stack overnight.
+Passkeys are ready for modern identity platforms, but they are not a magic eraser for every legacy protocol stack overnight.
 
 If someone tells you otherwise, ask to see the architecture diagram.
 
@@ -150,13 +128,7 @@ If someone tells you otherwise, ask to see the architecture diagram.
 
 ## Usability Is Not a Side Benefit
 
-Security teams often treat usability as optional.
-
-That’s a mistake.
-
-Password managers improved hygiene. They did not eliminate phishing. They still rely on shared secrets.
-
-Passkeys eliminate typing entirely.
+Security teams often treat usability as an optional benefit, but that is a mistake. Password managers improved credential hygiene without eliminating phishing because the underlying shared secret remained. Passkeys take the secret out of the user's hands and remove the need to type it into a page.
 
 Authentication becomes:
 
@@ -164,25 +136,13 @@ Authentication becomes:
 - Silent cryptographic signing  
 - Done  
 
-No password resets.  
-No guessing.  
-No “is this the right page?”
-
-Security improves because humans are removed from secret handling.
-
-That alignment is rare. When usability and security move in the same direction, you should pay attention.
+There is no password to reset or guess, and no authentication secret for the user to hand to the wrong page. Security improves because people are removed from routine secret handling. That alignment is rare: when usability and security move in the same direction, it is worth paying attention.
 
 ---
 
 ## Final Thought
 
-For decades we tried to train users to behave like security engineers.
-
-Passkeys flip the script.
-
-They assume users are human.  
-They assume attackers are sophisticated.  
-And they use cryptography — not judgement — as the control.
+For decades, we tried to train users to behave like security engineers. Passkeys take a different approach: they assume users are human, assume attackers are sophisticated, and use cryptography rather than judgement as the primary control.
 
 That is why they finally make sense.
 

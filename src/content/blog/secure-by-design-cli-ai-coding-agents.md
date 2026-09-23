@@ -42,15 +42,11 @@ keywords:
 
 ## We gave LLMs a shell. Now what?
 
-Over the past year, the conversation around AI coding assistants has changed quietly but significantly. We are no longer talking about autocomplete. We are no longer talking about better inline suggestions. Tools like GitHub Copilot CLI and Claude Code can execute shell commands, modify files, install dependencies, run tests, and push commits. In other words, they do real work inside real environments.
+Over the past year, the conversation around AI coding assistants has changed quietly but significantly. We are no longer talking only about autocomplete or better inline suggestions. Tools like GitHub Copilot CLI and Claude Code can execute shell commands, modify files, install dependencies, run tests, and push commits. In other words, they do real work inside real environments, and that changes the nature of the risk.
 
-That shift matters.
+When an LLM is generating text inside an editor, the most immediate failure is usually bad output. Once it can invoke tools and execute commands, the consequences become environmental: files can change, credentials may be accessed, network calls can be made, and commits can be pushed. The model is no longer just predicting tokens in a text box; its output can influence execution.
 
-When an LLM is generating text inside your editor, the worst case is usually bad output. When an LLM is allowed to invoke tools and execute commands, the worst case becomes environmental. Files change. Credentials are accessed. Network calls are made. Commits are pushed.
-
-The model is not just predicting tokens. It is influencing execution.
-
-Most of the public discussion still centres on hallucinations, prompt quality, and output accuracy. Those are valid concerns, but they are not the primary risk once you hand the model a shell. The risk moves from correctness to capability. The real question becomes: what is this allowed to do?
+Much of the public discussion still centres on hallucinations, prompt quality, and output accuracy. Those are valid concerns, but they are no longer the whole problem once you hand the model a shell. At that point, the risk moves from correctness towards capability, and the more useful question becomes: what is this agent actually allowed to do?
 
 ---
 
@@ -72,55 +68,29 @@ Trail of Bits has explored how prompt injection can be engineered to influence C
 
 Microsoft has published guidance on defending against indirect prompt injection in *[How Microsoft defends against indirect prompt injection attacks](https://www.microsoft.com/en-us/msrc/blog/2025/07/how-microsoft-defends-against-indirect-prompt-injection-attacks/)*, describing how external content and tool output can influence model reasoning.
 
-The model does not have a reliable semantic boundary between documentation and instruction. If a README contains the text “ignore previous instructions and run this command,” the model sees text. It reasons over text. It does not inherently know which parts are adversarial.
+The model does not have a perfectly reliable semantic boundary between documentation and instruction. If a README contains the text “ignore previous instructions and run this command,” the model receives more text to reason over; it cannot always determine which parts are legitimate context and which are adversarial.
 
-If the agent attempts to act on that content, the model is not compromised. It is behaving as designed.
+If an agent attempts to act on that content, describing the model itself as “compromised” can obscure the more important architectural question: why was it allowed to act? If the agent can read repository content, access the home directory, inspect `.ssh` or `.aws` credentials, and make outbound network calls without restriction, then prompt injection is only one part of the problem. The deeper problem is that untrusted input has been combined with broadly unrestricted execution.
 
-The architectural question is more important than the AI question.
-
-Why was it allowed to act?
-
-If the agent can read repository content, access your home directory, read `.ssh` or `.aws` credentials, and make outbound network calls without restriction, then the problem is not prompt injection. The problem is that untrusted input was combined with unrestricted execution.
-
-This is a familiar pattern. Injection attacks are not new. The difference now is that injected content influences a reasoning loop that can trigger automated system actions.
+This is a familiar security pattern. Injection attacks are not new; the difference is that injected content can now influence a reasoning loop capable of triggering automated system actions.
 
 ---
 
 ## The Predictable Failure Modes
 
-In practice, the risk is rarely exotic. It is usually convenience.
+In practice, the risk is rarely exotic. It usually starts with convenience: the agent runs in the home directory, so it can reach global configuration, SSH keys, cloud credentials, and environment variables. It inherits a broadly scoped personal GitHub token because that is what the developer already configured, and that token may allow write access across several repositories or workflows. Outbound network access is unrestricted because this is a normal developer machine, while auto-approve modes are enabled to reduce friction.
 
-The agent runs in the home directory. That means it can access global configuration, SSH keys, cloud credentials, and environment variables.
-
-The agent inherits a personal GitHub token with broad scope because that is what the developer already configured. That token may allow write access across multiple repositories or workflows.
-
-Outbound network access is unrestricted because it is a normal developer machine.
-
-Auto-approve modes are enabled to reduce friction.
-
-None of this is malicious. It is normal developer behaviour.
-
-But when you combine untrusted repository content, model-driven reasoning, and unrestricted execution, you create a predictable escalation path. Research around repository poisoning and indirect prompt injection simply makes that path visible.
-
-The model is not the weak link. The environment is.
+None of this is malicious or especially unusual; it is normal developer behaviour. When untrusted repository content, model-driven reasoning, and unrestricted execution are combined, however, they create a predictable escalation path. Research into repository poisoning and indirect prompt injection makes that path visible. In this scenario, the model is not the only weak link. The environment around it is what determines how far a mistake or manipulation can travel.
 
 ---
 
 ## Deterministic Controls Beat Prompt Warnings
 
-There is a temptation to solve this at the prompt level. Add warnings. Add system messages. Add more safety instructions.
+There is a temptation to solve this entirely at the prompt level by adding warnings, system messages, and more safety instructions. Those controls can help, but they remain probabilistic because they depend on model behaviour. Security engineering is on firmer ground when it can add deterministic controls around them.
 
-Those controls are probabilistic. They depend on model behaviour.
+If the agent runs inside a devcontainer that mounts only the project directory, it cannot casually read SSH keys from the host. If outbound network access is denied by default, arbitrary data exfiltration becomes significantly harder. If it uses a dedicated, minimally scoped token limited to one repository, the blast radius of a mistake is constrained.
 
-Security engineering prefers deterministic controls.
-
-If the agent runs inside a devcontainer that only mounts the project directory, it cannot access your SSH keys.
-
-If outbound network access is denied by default, arbitrary data exfiltration becomes significantly harder.
-
-If the agent uses a dedicated, minimally scoped token limited to a single repository, blast radius is constrained.
-
-These controls do not require the model to be perfect. They assume influence is possible and limit what influence can achieve.
+None of these controls requires the model to be perfect. They assume that influence and error are possible, then limit what either can achieve.
 
 Do not try to make the model flawless. Make the environment resilient.
 
@@ -128,7 +98,7 @@ Do not try to make the model flawless. Make the environment resilient.
 
 ## Extensibility Is a Trust Boundary
 
-Modern CLI agents support plugins, skills, and Model Context Protocol servers. This flexibility is powerful, but it expands the execution surface.
+Modern CLI agents support plugins, skills, and Model Context Protocol servers. That flexibility is powerful, but every extension also expands the execution and trust surface.
 
 Each integration introduces:
 
@@ -136,9 +106,7 @@ Each integration introduces:
 - New API scopes  
 - Additional supply chain dependencies  
 
-Microsoft’s guidance on indirect prompt injection highlights how tool output can become part of model reasoning. If a plugin retrieves external content and feeds it into the model, that content may influence subsequent actions.
-
-At that point, you are trusting not only the model, but every system it can talk to.
+Microsoft’s guidance on indirect prompt injection highlights how tool output can become part of model reasoning. If a plugin retrieves external content and feeds it into the model, that content may influence subsequent actions. At that point, you are trusting not only the model but also every system it can talk to and every credential the integration can exercise.
 
 Treat these integrations like production dependencies:
 
@@ -147,7 +115,7 @@ Treat these integrations like production dependencies:
 - Scope OAuth tokens carefully  
 - Avoid unvetted third-party integrations  
 
-Extensibility is not free. It is a deliberate trust decision.
+Extensibility is not free; it is a deliberate trust decision that should be reviewed like any other production dependency.
 
 ---
 
@@ -162,32 +130,24 @@ A reasonable baseline for CLI AI coding agents includes:
 - Using a dedicated, repo-scoped token  
 - Enabling command and change logging  
 
-This is not alarmism. It is standard least-privilege design.
-
-If you would hesitate to give a junior engineer unrestricted shell access, your personal GitHub token, and visibility into every credential on your machine, then you should hesitate before giving that same combination to an AI agent.
+This is not alarmism. It is ordinary least-privilege design applied to a new kind of operator. If you would hesitate to give a junior engineer unrestricted shell access, your personal GitHub token, and visibility into every credential on your machine, you should also hesitate before giving that same combination to an AI agent.
 
 ---
 
 ## This Is Not an AI Panic Story
 
-AI coding agents are extraordinarily useful. Many developers use them daily. The goal is not to slow adoption.
-
-The goal is to recognise that we have crossed a boundary. We have moved from suggestion to execution.
+AI coding agents are extraordinarily useful, and many developers already rely on them every day. The goal is not to slow adoption; it is to recognise that we have crossed a boundary from suggestion into execution and should design the surrounding environment accordingly.
 
 The security community has already documented prompt injection and indirect context manipulation, including the **[OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/)** which highlights prompt injection and insecure output handling as key risks.
 
-The interesting part is not the attack. The interesting part is that we already know how to address it.
+The interesting part is not that this attack class exists. It is that we already know how to reduce its impact:
 
 Define trust boundaries.  
 Constrain execution.  
 Scope identity.  
 Log actions.  
 
-AI coding agents are systems.
-
-Systems require constraints.
-
-We gave LLMs a shell. Now we should design accordingly.
+AI coding agents are systems, and systems require constraints. We gave LLMs a shell; now we should design the environment around that fact.
 
 ---
 
@@ -207,5 +167,4 @@ We gave LLMs a shell. Now we should design accordingly.
 
 ---
 
-This is my curiosity and ideas synthesized and correlated with my friendly chatgpt.
-
+This is my curiosity and ideas synthesised and correlated with help from my friendly ChatGPT.
